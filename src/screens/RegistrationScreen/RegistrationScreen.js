@@ -3,13 +3,18 @@ import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
 import { firebase } from '../../firebase/config'
+import { Checkbox } from 'react-native-paper'
 
 
-export default function RegistrationScreen({navigation}) {
+
+export default function RegistrationScreen({ navigation }) {
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    // const [isSelected, setSelection] = React.useState(false);
+
+     const [checked, setChecked] = useState('');
 
     const onFooterLinkPress = () => {
         navigation.navigate('Login')
@@ -29,14 +34,16 @@ export default function RegistrationScreen({navigation}) {
                     id: uid,
                     email,
                     fullName,
+                    checked
                 };
                 const usersRef = firebase.firestore().collection('users')
                 usersRef
                     .doc(uid)
                     .set(data)
+                    //.add(info)
                     .then(() => {
-                        console.log('success')
-                        navigation.navigate('Home', {user: data})
+                      
+                        navigation.navigate('Home', { user: data })
                     })
                     .catch((error) => {
                         alert(error)
@@ -44,9 +51,9 @@ export default function RegistrationScreen({navigation}) {
             })
             .catch((error) => {
                 alert(error)
-        });
+            });
     }
-    
+
 
     return (
         <View style={styles.container}>
@@ -95,6 +102,17 @@ export default function RegistrationScreen({navigation}) {
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
                 />
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                    <Text>Share Data? </Text>
+                    <Checkbox
+                        status={checked ? 'checked' : 'unchecked'}
+                        onPress={() => {
+                            setChecked(!checked);
+                        }}
+                    />
+
+                </View>
+
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => onRegisterPress()}>
