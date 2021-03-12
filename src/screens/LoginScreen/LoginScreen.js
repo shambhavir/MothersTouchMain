@@ -23,15 +23,21 @@ export default function LoginScreen({navigation}) {
                     .doc(uid)
                     .get()
                     .then(firestoreDocument => {
-                        if (!firestoreDocument.exists) {
+                        if (!firestoreDocument.exists) 
+                        {
                             alert("User does not exist anymore.")
                             return;
                         }
-                        else{
                         const user = firestoreDocument.data()
-                        console.log('success!!')
-                        navigation.navigate('Home', {user})
-
+                        if(!response.user.checked)
+                        {
+                            console.log('you checked for more info!')
+                            navigation.navigate('MoreInfo', {user})
+                        }
+                        else
+                        {
+                           console.log('you didnt check more info')
+                           navigation.navigate('Home', {user})
                         }
                     })
                     .catch(error => {

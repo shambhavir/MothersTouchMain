@@ -14,7 +14,7 @@ export default function RegistrationScreen({ navigation }) {
     const [confirmPassword, setConfirmPassword] = useState('')
     // const [isSelected, setSelection] = React.useState(false);
 
-     const [checked, setChecked] = useState('');
+     const [checked, setChecked] = useState(true);
 
     const onFooterLinkPress = () => {
         navigation.navigate('Login')
@@ -42,8 +42,8 @@ export default function RegistrationScreen({ navigation }) {
                     .set(data)
                     //.add(info)
                     .then(() => {
-                      
-                        navigation.navigate('Home', { user: data })
+                        navigation.navigate('Login', {user:data})
+                        //navigation.navigate('Home', { user: data })
                     })
                     .catch((error) => {
                         alert(error)

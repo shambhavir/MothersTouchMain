@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { LoginScreen, HomeScreen, RegistrationScreen } from './src/screens'
+import { LoginScreen, HomeScreen, RegistrationScreen} from './src/screens'
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { firebase } from './src/firebase/config'
@@ -62,6 +62,7 @@ export default class AppNavi extends Component {
                 ) : 
                   <>
                     <Stack.Screen name="Home" component={HomeScreen}/>
+                    {/* <Stack.Screen name = "MoreInfo" component={MoreInfo}/> */}
                   </>
              }
   
