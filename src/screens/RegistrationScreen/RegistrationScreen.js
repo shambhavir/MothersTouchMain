@@ -3,10 +3,12 @@ import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
 import { firebase } from '../../firebase/config'
-import { Checkbox } from 'react-native-paper'
+// import { Checkbox } from 'react-native-paper'
+import {CheckBox} from 'react-native-elements';
 
 
-
+//need to add forgot password, or reset password
+//user settings page 
 export default function RegistrationScreen({ navigation }) {
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
@@ -14,7 +16,7 @@ export default function RegistrationScreen({ navigation }) {
     const [confirmPassword, setConfirmPassword] = useState('')
     // const [isSelected, setSelection] = React.useState(false);
 
-     const [checked, setChecked] = useState(true);
+     const [checked, setChecked] = useState(false);
 
     const onFooterLinkPress = () => {
         navigation.navigate('Login')
@@ -42,6 +44,7 @@ export default function RegistrationScreen({ navigation }) {
                     .set(data)
                     //.add(info)
                     .then(() => {
+                        
                         navigation.navigate('Login', {user:data})
                         //navigation.navigate('Home', { user: data })
                     })
@@ -103,12 +106,16 @@ export default function RegistrationScreen({ navigation }) {
                     autoCapitalize="none"
                 />
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                    <Text>Share Data? </Text>
-                    <Checkbox
-                        status={checked ? 'checked' : 'unchecked'}
-                        onPress={() => {
-                            setChecked(!checked);
-                        }}
+                    {/* <Text>Share Data? </Text> */}
+                    <CheckBox
+                      //  status={checked}
+                      title = "Share Data?"
+                      checked = {checked}
+                      onPress={() => setChecked(!checked)}
+                        //status={checked ? 'checked' : 'unchecked'}
+                        // onPress={() => {
+                        //     setChecked(!checked);
+                        // }}
                     />
 
                 </View>

@@ -4,7 +4,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import styles from './styles';
 import { firebase } from '../../firebase/config'
 
-export default function LoginScreen({navigation}) {
+export default function LoginScreen({ navigation }) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -23,21 +23,23 @@ export default function LoginScreen({navigation}) {
                     .doc(uid)
                     .get()
                     .then(firestoreDocument => {
-                        if (!firestoreDocument.exists) 
-                        {
-                            alert("User does not exist anymore.")
+                        if (!firestoreDocument.exists) {
+                            alert("Make an account to login!")
                             return;
                         }
                         const user = firestoreDocument.data()
-                        if(!response.user.checked)
+                        const checkVal = user.checked
+                        //console.log(checkVal);
+
+                        if (checkVal == true) 
                         {
                             console.log('you checked for more info!')
-                            navigation.navigate('MoreInfo', {user})
+                            navigation.navigate('MoreInfo', { user })
                         }
-                        else
+                        else 
                         {
-                           console.log('you didnt check more info')
-                           navigation.navigate('Home', {user})
+                            console.log('you didnt check more info')
+                            navigation.navigate('Home', { user })
                         }
                     })
                     .catch(error => {
