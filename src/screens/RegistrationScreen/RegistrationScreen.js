@@ -5,6 +5,8 @@ import styles from './styles';
 import { firebase } from '../../firebase/config'
 // import { Checkbox } from 'react-native-paper'
 import {CheckBox} from 'react-native-elements';
+import "firebase/auth";
+import "firebase/firestore";
 
 
 //need to add forgot password, or reset password
@@ -14,9 +16,13 @@ export default function RegistrationScreen({ navigation }) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    // const [hasOptedIn, setInfo] = useState('')
+    const [bloodPressure, setBP] = useState(0)
+    const [age, setAge] = useState(0)
+    const [monthsPreg, setMP] = useState(0)
     // const [isSelected, setSelection] = React.useState(false);
 
-     const [checked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(false);
 
     const onFooterLinkPress = () => {
         navigation.navigate('Login')
@@ -36,7 +42,7 @@ export default function RegistrationScreen({ navigation }) {
                     id: uid,
                     email,
                     fullName,
-                    checked
+                    checked, 
                 };
                 const usersRef = firebase.firestore().collection('users')
                 usersRef

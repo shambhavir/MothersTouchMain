@@ -14,6 +14,7 @@ const Stack = createStackNavigator();
 export default function App() {
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState(null)
+  const [loggedin, setLoggedIn] = useState(false)
 
   useEffect(() => {
     const usersRef = firebase.firestore().collection('users');
@@ -34,6 +35,7 @@ export default function App() {
         setLoading(false)
       }
     });
+    return firebase.auth().onAuthStateChanged(setLoggedIn);
   }, []);
 
   return (
