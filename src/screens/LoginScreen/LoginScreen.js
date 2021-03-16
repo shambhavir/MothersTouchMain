@@ -38,6 +38,8 @@ export default function LoginScreen({ navigation }) {
                         if (checkVal == true) 
                         {
                             console.log('you checked for more info!')
+                            //navigation.navigate('Home', { user })
+
                             navigation.navigate('MoreInfo', { user })
                         }
                         else 

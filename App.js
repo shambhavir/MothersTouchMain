@@ -35,7 +35,7 @@ export default function App() {
         setLoading(false)
       }
     });
-    return firebase.auth().onAuthStateChanged(setLoggedIn);
+    //return firebase.auth().onAuthStateChanged(setLoggedIn);
   }, []);
 
   return (

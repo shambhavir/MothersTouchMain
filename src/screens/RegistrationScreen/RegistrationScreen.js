@@ -8,6 +8,7 @@ import {CheckBox} from 'react-native-elements';
 import "firebase/auth";
 import "firebase/firestore";
 
+import AsyncStorage from '@react-native-community/async-storage';
 
 //need to add forgot password, or reset password
 //user settings page 
@@ -17,9 +18,7 @@ export default function RegistrationScreen({ navigation }) {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     // const [hasOptedIn, setInfo] = useState('')
-    const [bloodPressure, setBP] = useState(0)
-    const [age, setAge] = useState(0)
-    const [monthsPreg, setMP] = useState(0)
+    
     // const [isSelected, setSelection] = React.useState(false);
 
     const [checked, setChecked] = useState(false);

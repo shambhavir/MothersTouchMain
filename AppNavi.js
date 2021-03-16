@@ -62,7 +62,7 @@ export default class AppNavi extends Component {
                 ) : 
                   <>
                     <Stack.Screen name="Home" component={HomeScreen}/>
-                    {/* <Stack.Screen name = "MoreInfo" component={MoreInfo}/> */}
+                    <Stack.Screen name = "MoreInfo" component={MoreInfo}/>
                   </>
              }
   

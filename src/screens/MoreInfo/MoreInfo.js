@@ -11,9 +11,9 @@ import "firebase/firestore";
 
 
 export default function MoreInfo({ navigation }) {
-    const [bp, setBP] = useState(0)
-    const [age, setAge] = useState(0)
-    const [monthsPreg, setMP] = useState(0)
+    var bp = useState(0)
+    var age = useState(0)
+    var monthsPreg = useState(0)
 
     //to properly save data 
     const user = firebase.auth().currentUser;
@@ -44,19 +44,20 @@ export default function MoreInfo({ navigation }) {
                     placeholderTextColor="#aaaaaa"
                     secureTextEntry
                     placeholder='Blood Pressure'
+                    keyboardType={'numeric'}
                     onChangeText={
                         (text) => {
                             const userRef = db.collection("users").doc(user.uid).update(
                                 {
-                                    bloodPresure: text
+                                    bloodPressure: text
                                 }
                             )
                                 // .then(function () {
-                                //     console.log("Document successfully updated!");
+                                //     console.log("Document successfully updated 2!");
                                 // });
 
                         }}
-                    value={bp}
+                        value={bp}
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
                 />}
@@ -72,31 +73,24 @@ export default function MoreInfo({ navigation }) {
                                     monthsPreg: text
                                 }
                             )
-                                // .then(function () {
-                                //     console.log("Document successfully updated 2!");
-                                // });
 
                         }}
                     value={monthsPreg}
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
-                />}
+                />} 
                 {<TextInput
                     style={styles.input}
                     placeholderTextColor="#aaaaaa"
                     secureTextEntry
                     placeholder='Age'
-                    onChangeText={
+                    onChangeText = {
                         (text) => {
                             const userRef = db.collection("users").doc(user.uid).update(
                                 {
                                     age: text
                                 }
                             )
-                                // .then(function () {
-                                //     console.log("Document successfully updated 3!");
-                                // });
-
                         }}
                     value={age}
                     underlineColorAndroid="transparent"
