@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 5,
         alignItems: 'center'
     },
     title: {
@@ -20,8 +20,8 @@ export default StyleSheet.create({
         borderRadius: 5,
         overflow: 'hidden',
         backgroundColor: 'white',
-        marginTop: 10,
-        marginBottom: 10,
+        marginTop: 15,
+        marginBottom: 15,
         marginLeft: 30,
         marginRight: 30,
         paddingLeft: 16
