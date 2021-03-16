@@ -3,9 +3,9 @@ import '@firebase/auth';
 import '@firebase/firestore';
 
 const firebaseConfig = {
-     apiKey: 'AIzaSyC0WDOmCiReCK3iAVywMdlg3D2aUlX4Mp4',
+    apiKey: 'AIzaSyC0WDOmCiReCK3iAVywMdlg3D2aUlX4Mp4',
     authDomain: 'motherstouch-c16c2.firebaseapp.com',
-    databaseURL: 'https://motherstouch-c16c2.firebaseio.com/',
+    databaseURL: 'https://motherstouch-c16c2.firebaseio.com',
     projectId: 'motherstouch-c16c2',
     storageBucket: 'motherstouch-c16c2.appspot.com',
     messagingSenderId: '785346079795',
@@ -16,5 +16,7 @@ const firebaseConfig = {
   if (!firebase.apps.length) {
       firebase.initializeApp(firebaseConfig);
   }
+  //const app = Firebase.initializeApp(firebaseConfig);
+  export const db = firebase.firestore();
   
   export { firebase };
