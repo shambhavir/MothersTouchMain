@@ -57,7 +57,10 @@ export default class MoreInfo extends React.Component {
             );
     }
     onPress = () => {
-       // navigation.navigate('Home', { user })
+        // navigation.navigate('Home', { user })
+    }
+    onFooterLinkPress = () => {
+        this.props.navigation.navigate('Home', { user })
     }
     // updateState({navigation}) 
     // { // call this onClick to trigger the update
@@ -68,7 +71,7 @@ export default class MoreInfo extends React.Component {
     //     this.props.navigation.navigate('Home', { user })
 
     // }
-  
+
     render() {
 
         return (
@@ -86,6 +89,7 @@ export default class MoreInfo extends React.Component {
                         placeholder='Blood Pressure'
                         underlineColorAndroid="transparent"
                         autoCapitalize="none"
+                        keyboardType="numeric"
                         multiline
                         onChangeText={(bp) => this.setState({ bp })}
                         value={`${this.state.bp}`}
@@ -97,6 +101,7 @@ export default class MoreInfo extends React.Component {
                         placeholder='Months Pregnant'
                         underlineColorAndroid="transparent"
                         autoCapitalize="none"
+                        keyboardType="numeric"
                         multiline
                         onChangeText={(mp) => this.setState({ mp })}
                         value={`${this.state.mp}`}
@@ -108,22 +113,26 @@ export default class MoreInfo extends React.Component {
                         placeholder='Age'
                         underlineColorAndroid="transparent"
                         autoCapitalize="none"
+                        keyboardType="numeric"
                         multiline
                         onChangeText={(ag) => this.setState({ ag })}
                         value={`${this.state.ag}`}
                     />
-                        <View style={styles.innerContainer}>
-                            <TouchableOpacity
-                                style={styles.button}
-                                onPress=
-                                {
-                                    this.updateInfo
-                                }
-                            >
-                                <Text style={styles.buttonTitle}>Submit Data</Text>
-                            </TouchableOpacity>
-                        </View>
-                        {/* <View style={styles.innerContainer}>
+                    <View style={styles.innerContainer}>
+                        <TouchableOpacity
+                            style={styles.button}
+                            onPress=
+                            {
+                                this.updateInfo
+                            }
+                        >
+                            <Text style={styles.buttonTitle}>Submit Data</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.footerView}>
+                        <Text onPress={this.onFooterLinkPress} style={styles.footerLink}>Home</Text>
+                    </View>
+                    {/* <View style={styles.innerContainer}>
                         <TouchableOpacity
                                 style={styles.button}
                                 onPress=
