@@ -3,13 +3,14 @@ import '@firebase/auth';
 import '@firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: 'AIzaSyC6YoHJ6Ea_JEQvGKfy3Cqst9gD0I4KCeI',
-    authDomain: 'motherstouch--signin.firebaseapp.com',
-    databaseURL: 'https://motherstouch--signin-default-rtdb.firebaseio.com/',
-    projectId: 'motherstouch--signin',
-    storageBucket: 'motherstouch--signin.appspot.com',
-    messagingSenderId: '407259421774',
-    appId: '1:407259421774:web:f04619e9c1007acb11b71f',
+     apiKey: 'AIzaSyC0WDOmCiReCK3iAVywMdlg3D2aUlX4Mp4',
+    authDomain: 'motherstouch-c16c2.firebaseapp.com',
+    databaseURL: 'https://motherstouch-c16c2.firebaseio.com/',
+    projectId: 'motherstouch-c16c2',
+    storageBucket: 'motherstouch-c16c2.appspot.com',
+    messagingSenderId: '785346079795',
+    appId: '1:785346079795:web:72baf49031776cbb334746',
+    measurementId: 'G-RJGR80MXXE'
   };
   
   if (!firebase.apps.length) {
