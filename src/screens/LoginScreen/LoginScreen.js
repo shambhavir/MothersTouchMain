@@ -37,10 +37,16 @@ export default function LoginScreen({ navigation }) {
 
                         if (checkVal == true) 
                         {
+                            if(user.bloodPressure != "")
+                            {
+                                console.log("not empty"); 
+                                navigation.navigate('Home', {user}); 
+                            }
+                            else
+                                navigation.navigate('MoreInfo', { user })
+
                             console.log('you checked for more info!')
                             //navigation.navigate('Home', { user })
-
-                            navigation.navigate('MoreInfo', { user })
                         }
                         else 
                         {

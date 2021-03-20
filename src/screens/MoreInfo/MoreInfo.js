@@ -16,7 +16,6 @@ export default class MoreInfo extends React.Component {
         super(props);
         this.state =
         {
-            modalVisible: false,
             bp: '',
             ag: '',
             mp: ''
@@ -73,11 +72,14 @@ export default class MoreInfo extends React.Component {
     // }
 
     render() {
-
+//                <KeyboardAwareScrollView style={{ flex: 1, width: '100%' }}
         return (
             <View style={styles.container}>
                 <KeyboardAwareScrollView style={{ flex: 1, width: '100%' }}
-                    keyboardShouldPersistTaps="always">
+                    keyboardShouldPersistTaps="handled"
+                    onPress={KeyboardAwareScrollView.dismiss}
+                    accessible={false}
+                    >
                     <Image
                         style={styles.logo}
                         source={require('../../../assets/icon.png')}
@@ -89,7 +91,6 @@ export default class MoreInfo extends React.Component {
                         placeholder='Blood Pressure'
                         underlineColorAndroid="transparent"
                         autoCapitalize="none"
-                        keyboardType="numeric"
                         multiline
                         onChangeText={(bp) => this.setState({ bp })}
                         value={`${this.state.bp}`}
@@ -101,7 +102,6 @@ export default class MoreInfo extends React.Component {
                         placeholder='Months Pregnant'
                         underlineColorAndroid="transparent"
                         autoCapitalize="none"
-                        keyboardType="numeric"
                         multiline
                         onChangeText={(mp) => this.setState({ mp })}
                         value={`${this.state.mp}`}
@@ -113,7 +113,6 @@ export default class MoreInfo extends React.Component {
                         placeholder='Age'
                         underlineColorAndroid="transparent"
                         autoCapitalize="none"
-                        keyboardType="numeric"
                         multiline
                         onChangeText={(ag) => this.setState({ ag })}
                         value={`${this.state.ag}`}
