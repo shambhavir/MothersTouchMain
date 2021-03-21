@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { LoginScreen, HomeScreen, RegistrationScreen } from './src/screens'
+import { LoginScreen, HomeScreen, RegistrationScreen, CovidScreen, VaccineScreen, MaternalScreen, OtherInfoScreen,FAQScreen } from './src/screens'
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { firebase } from './src/firebase/config'
@@ -62,10 +62,41 @@ export default class AppNavi extends Component {
                 ) : 
                   <>
                     <Stack.Screen name="Home" component={HomeScreen}/>
+                    <Stack.Screen name="Covid-19" component={CovidScreen}/>
+                    <Stack.Screen name="Vaccine" component={VaccineScreen}/>
+                    <Stack.Screen name="Maternal" component={MaternalScreen}/>
+                    <Stack.Screen name="Other Info" component={OtherInfoScreen}/>
+                    <Stack.Screen name="FAQ" component={FAQScreen}/>
                   </>
+                  
+                  
+
              }
   
             </Stack.Navigator>
           </NavigationContainer>
         )
   }}
+
+
+  {/*const Stack = createStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Covid-19" component={CovidScreen} />
+        <Stack.Screen name="Vaccine" component={VaccineScreen} />
+        <Stack.Screen name="Maternal" component={MaternalScreen} />
+        <Stack.Screen name="Other Info" component={OtherInfoScreen} />
+        <Stack.Screen name="FAQ" component={FAQScreen} />
+        <Stack.Screen name="Our Team" component={OurTeamScreen} />
+      </Stack.Navigator>
+      <Tabs.Navigator>
+        <Tabs.Screen name = "Fart" component = {Fart}/>
+        <Tabs.Screen name = "Penis" component = {Penis}/> 
+      </Tabs.Navigator>
+    </NavigationContainer>
+  );
+}*/}
