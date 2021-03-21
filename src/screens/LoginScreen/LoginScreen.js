@@ -3,8 +3,13 @@ import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
 import { firebase } from '../../firebase/config'
+import "firebase/auth";
+import "firebase/firestore";
+import "firebase/database";
 
-export default function LoginScreen({navigation}) {
+import AsyncStorage from '@react-native-community/async-storage';
+
+export default function LoginScreen({ navigation }) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -24,14 +29,27 @@ export default function LoginScreen({navigation}) {
                     .get()
                     .then(firestoreDocument => {
                         if (!firestoreDocument.exists) {
-                            alert("User does not exist anymore.")
+                            alert("Make an account to login!")
                             return;
                         }
-                        else{
                         const user = firestoreDocument.data()
-                        console.log('success!!')
-                        navigation.navigate('Home', {user})
-
+                        const checkVal = user.checked
+                        //console.log(user.email)
+                        //console.log(checkVal);
+                        //console.log(user.bloodPressure + "nothing")
+                        if (checkVal == true) {
+                            // if (user.bloodPressure + "nothing" == user.bloodPressure + "nothing") {
+                            //     console.log("not empty");
+                                navigation.navigate('MoreInfo', { user })
+                          //  }
+                          ///  else
+                            //    navigation.navigate('Home', { user });
+                            console.log('you checked for more info!')
+                            //navigation.navigate('Home', { user })
+                        }
+                        else {
+                            console.log('you didnt check more info')
+                            navigation.navigate('Home', { user })
                         }
                     })
                     .catch(error => {
