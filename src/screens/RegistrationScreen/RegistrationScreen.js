@@ -7,6 +7,8 @@ import { firebase } from '../../firebase/config'
 import {CheckBox} from 'react-native-elements';
 import "firebase/auth";
 import "firebase/firestore";
+import "firebase/database";
+
 
 import AsyncStorage from '@react-native-community/async-storage';
 

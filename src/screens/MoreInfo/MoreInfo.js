@@ -3,13 +3,14 @@ import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
 import AsyncStorage from '@react-native-community/async-storage';
+// import p1 from '../Page1/Page1.js'
 
-
-import { firebase, firebaseConfig, db } from '../../firebase/config'
+import { firebase, firebaseConfig, db, getUserDocument, realtime } from '../../firebase/config'
 import "firebase/auth";
 import "firebase/firestore";
+import "firebase/database";
+
 const user = firebase.auth().currentUser;
-//const {navigate} = this.props.navigation;
 
 export default class MoreInfo extends React.Component {
     constructor(props) {
@@ -19,41 +20,59 @@ export default class MoreInfo extends React.Component {
             bp: '',
             ag: '',
             mp: ''
+           // presentToDo: ''
+
         };
     }
+    
+
     componentDidMount() {
 
+        // firebase.database().ref("users"); 
+        const userRef = firebase.database().ref("users"); 
+        const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
+        const bpRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/"+ "BloodPressure")
+        const path = bpRef.toString();
+        console.log(path); 
+        bpRef.set({
+            bpMeasure: this.state.bp,
+        })
+  
+        // db.collection("users").doc(firebase.auth().currentUser.uid).update(
+        //     {
+        //         bloodPressure: this.state.bp
+        //     }),
         db.collection("users").doc(firebase.auth().currentUser.uid).update(
             {
-                bloodPressure: this.state.bp
-            }),
-            db.collection("users").doc(firebase.auth().currentUser.uid).update(
-                {
-                    age: this.state.ag
-                }
-            ),
-            db.collection("users").doc(firebase.auth().currentUser.uid).update(
-                {
-                    monthsPreg: this.state.mp
-                });
-
-    }
-    updateInfo = () => {
-        db.collection("users").doc(firebase.auth().currentUser.uid).update(
-            {
-                bloodPressure: this.state.bp,
+                age: this.state.ag
             }
         ),
-            db.collection("users").doc(firebase.auth().currentUser.uid).update(
-                {
-                    age: this.state.ag
-                }
-            ),
-            db.collection("users").doc(firebase.auth().currentUser.uid).update(
-                {
-                    monthsPreg: this.state.mp
-                }
-            );
+        db.collection("users").doc(firebase.auth().currentUser.uid).update(
+            {
+                monthsPreg: this.state.mp
+            });
+    }
+    updateInfo = () => {
+        const userRef = firebase.database().ref("users"); 
+        const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
+        const bpRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid +"/"+  "BloodPressure")
+        const path = bpRef.toString();
+        console.log(path); 
+        bpRef.set({
+            bpMeasure: this.state.bp,
+        })
+      
+       
+        db.collection("users").doc(firebase.auth().currentUser.uid).update(
+            {
+                age: this.state.ag
+            }
+        ),
+        db.collection("users").doc(firebase.auth().currentUser.uid).update(
+            {
+                monthsPreg: this.state.mp
+            }
+        );
     }
     onPress = () => {
         // navigation.navigate('Home', { user })
@@ -61,25 +80,17 @@ export default class MoreInfo extends React.Component {
     onFooterLinkPress = () => {
         this.props.navigation.navigate('Home', { user })
     }
-    // updateState({navigation}) 
-    // { // call this onClick to trigger the update
-    //     // if (somecondition) {
-    //     //   // doing some redux store update
-    //     //   this.props.reloadApp();
-    //     // }
-    //     this.props.navigation.navigate('Home', { user })
 
-    // }
 
     render() {
-//                <KeyboardAwareScrollView style={{ flex: 1, width: '100%' }}
+        //                <KeyboardAwareScrollView style={{ flex: 1, width: '100%' }}
         return (
             <View style={styles.container}>
                 <KeyboardAwareScrollView style={{ flex: 1, width: '100%' }}
                     keyboardShouldPersistTaps="handled"
                     onPress={KeyboardAwareScrollView.dismiss}
                     accessible={false}
-                    >
+                >
                     <Image
                         style={styles.logo}
                         source={require('../../../assets/icon.png')}

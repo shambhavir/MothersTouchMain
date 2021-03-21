@@ -5,6 +5,8 @@ import styles from './styles';
 import { firebase } from '../../firebase/config'
 import "firebase/auth";
 import "firebase/firestore";
+import "firebase/database";
+
 import AsyncStorage from '@react-native-community/async-storage';
 
 export default function LoginScreen({ navigation }) {
@@ -34,22 +36,18 @@ export default function LoginScreen({ navigation }) {
                         const checkVal = user.checked
                         //console.log(user.email)
                         //console.log(checkVal);
-
-                        if (checkVal == true) 
-                        {
-                            if(user.bloodPressure != "")
-                            {
-                                console.log("not empty"); 
-                                navigation.navigate('Home', {user}); 
-                            }
-                            else
+                        //console.log(user.bloodPressure + "nothing")
+                        if (checkVal == true) {
+                            // if (user.bloodPressure + "nothing" == user.bloodPressure + "nothing") {
+                            //     console.log("not empty");
                                 navigation.navigate('MoreInfo', { user })
-
+                          //  }
+                          ///  else
+                            //    navigation.navigate('Home', { user });
                             console.log('you checked for more info!')
                             //navigation.navigate('Home', { user })
                         }
-                        else 
-                        {
+                        else {
                             console.log('you didnt check more info')
                             navigation.navigate('Home', { user })
                         }
