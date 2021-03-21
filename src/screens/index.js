@@ -12,7 +12,6 @@ export { default as MaternalScreen } from './MaternalScreen/MaternalScreen'
 
 export { default as OtherInfoScreen } from './OtherInfoScreen/OtherInfoScreen'
 
-
 export { default as FAQScreen } from './FAQScreen/FAQScreen'
 
 

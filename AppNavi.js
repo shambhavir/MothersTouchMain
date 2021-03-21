@@ -79,24 +79,4 @@ export default class AppNavi extends Component {
   }}
 
 
-  {/*const Stack = createStackNavigator();
 
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Covid-19" component={CovidScreen} />
-        <Stack.Screen name="Vaccine" component={VaccineScreen} />
-        <Stack.Screen name="Maternal" component={MaternalScreen} />
-        <Stack.Screen name="Other Info" component={OtherInfoScreen} />
-        <Stack.Screen name="FAQ" component={FAQScreen} />
-        <Stack.Screen name="Our Team" component={OurTeamScreen} />
-      </Stack.Navigator>
-      <Tabs.Navigator>
-        <Tabs.Screen name = "Fart" component = {Fart}/>
-        <Tabs.Screen name = "Penis" component = {Penis}/> 
-      </Tabs.Navigator>
-    </NavigationContainer>
-  );
-}*/}
