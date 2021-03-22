@@ -3,7 +3,6 @@ import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
 import AsyncStorage from '@react-native-community/async-storage';
-// import p1 from '../Page1/Page1.js'
 
 import { firebase, firebaseConfig, db, getUserDocument, realtime } from '../../firebase/config'
 import "firebase/auth";
@@ -20,28 +19,18 @@ export default class MoreInfo extends React.Component {
             bp: '',
             ag: '',
             mp: ''
-           // presentToDo: ''
-
         };
     }
-    
 
-    componentDidMount() {
 
-        // firebase.database().ref("users"); 
-        const userRef = firebase.database().ref("users"); 
+    componentDidMount() 
+    {
+
+        const userRef = firebase.database().ref("users");
         const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
-        const bpRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/"+ "BloodPressure")
+        const bpRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "BloodPressure")
         const path = bpRef.toString();
-        console.log(path); 
-        bpRef.set({
-            bpMeasure: this.state.bp,
-        })
-  
-        // db.collection("users").doc(firebase.auth().currentUser.uid).update(
-        //     {
-        //         bloodPressure: this.state.bp
-        //     }),
+        //console.log(path);
         db.collection("users").doc(firebase.auth().currentUser.uid).update(
             {
                 age: this.state.ag
@@ -49,30 +38,37 @@ export default class MoreInfo extends React.Component {
         ),
         db.collection("users").doc(firebase.auth().currentUser.uid).update(
             {
-                monthsPreg: this.state.mp
+                    monthsPreg: this.state.mp
             });
     }
-    updateInfo = () => {
-        const userRef = firebase.database().ref("users"); 
+    updateInfo = () => 
+    {
+        const userRef = firebase.database().ref("users");
         const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
-        const bpRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid +"/"+  "BloodPressure")
+        const bpRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "BloodPressure")
         const path = bpRef.toString();
-        console.log(path); 
-        bpRef.set({
+        //console.log(path);
+        bpRef.push({
             bpMeasure: this.state.bp,
+            date: Date.now(),
         })
-      
-       
+        bpRef.once("value").then(function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                var key = childSnapshot.key;
+                var childData = childSnapshot.val();
+                console.log(childData);
+            });
+        });
         db.collection("users").doc(firebase.auth().currentUser.uid).update(
             {
                 age: this.state.ag
             }
         ),
-        db.collection("users").doc(firebase.auth().currentUser.uid).update(
-            {
-                monthsPreg: this.state.mp
-            }
-        );
+            db.collection("users").doc(firebase.auth().currentUser.uid).update(
+                {
+                    monthsPreg: this.state.mp
+                }
+            );
     }
     onPress = () => {
         // navigation.navigate('Home', { user })
