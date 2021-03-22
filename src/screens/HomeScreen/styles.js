@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native';
+//Shambhavi cards trial 
+{/*import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     container: {
@@ -16,4 +17,4 @@ export default StyleSheet.create({
         marginRight: 30,
         paddingLeft: 16
     }
-})
+})*/}
