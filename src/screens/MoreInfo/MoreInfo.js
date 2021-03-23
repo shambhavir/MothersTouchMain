@@ -10,6 +10,12 @@ import "firebase/firestore";
 import "firebase/database";
 
 const user = firebase.auth().currentUser;
+const counts = []
+const trial = [];
+let current = []
+var data1 = [];
+//const[dash, setDash] = useState('')
+
 
 export default class MoreInfo extends React.Component {
     constructor(props) {
@@ -18,19 +24,13 @@ export default class MoreInfo extends React.Component {
         {
             bp: '',
             ag: '',
-            mp: ''
+            mp: '',
+            intVal: [],
+            dash: ''
         };
     }
-
-
-    componentDidMount() 
-    {
-
-        const userRef = firebase.database().ref("users");
-        const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
-        const bpRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "BloodPressure")
-        const path = bpRef.toString();
-        //console.log(path);
+    componentDidMount() {
+        this.fetchData();
         db.collection("users").doc(firebase.auth().currentUser.uid).update(
             {
                 age: this.state.ag
@@ -38,48 +38,73 @@ export default class MoreInfo extends React.Component {
         ),
         db.collection("users").doc(firebase.auth().currentUser.uid).update(
             {
-                    monthsPreg: this.state.mp
+                monthsPreg: this.state.mp
             });
     }
-    updateInfo = () => 
-    {
+    
+    updateInfo = () => {
+        const keys = []
+
         const userRef = firebase.database().ref("users");
         const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
         const bpRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "BloodPressure")
         const path = bpRef.toString();
-        //console.log(path);
+
         bpRef.push({
             bpMeasure: this.state.bp,
             date: Date.now(),
         })
-        bpRef.once("value").then(function (snapshot) {
-            snapshot.forEach(function (childSnapshot) {
-                var key = childSnapshot.key;
-                var childData = childSnapshot.val();
-                console.log(childData);
-            });
-        });
+
+     
+      
+
         db.collection("users").doc(firebase.auth().currentUser.uid).update(
             {
                 age: this.state.ag
             }
         ),
-            db.collection("users").doc(firebase.auth().currentUser.uid).update(
-                {
-                    monthsPreg: this.state.mp
-                }
-            );
+        db.collection("users").doc(firebase.auth().currentUser.uid).update(
+            {
+                monthsPreg: this.state.mp
+            }
+        );
     }
+
+    fetchData = async () => {
+        const userRef = firebase.database().ref("users");
+        const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
+        const bpRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "BloodPressure");        bpRef.once('value').then(snapshot => {
+            snapshot.forEach(item => {
+                var temp = { bp1: item.val().bpMeasure };
+                // var temp = item.val();
+                data1.push(Object.values(temp));
+                //this.dash = temp; 
+                this.setState({ dash: Object.values(temp) });
+                this.setState({intVal:Object.values(temp) })
+                //console.log(this.state.dash);
+                return false;
+       });
+       //console.log(data1[0])
+    //    console.log(data1);
+    console.log(data1);
+
+       });
+    }
+
+    
     onPress = () => {
         // navigation.navigate('Home', { user })
     }
     onFooterLinkPress = () => {
+
         this.props.navigation.navigate('Home', { user })
     }
-
+    onLinkPress = () => {
+        // this.props.navigation.navigate('Home', { user })
+    }
+    
 
     render() {
-        //                <KeyboardAwareScrollView style={{ flex: 1, width: '100%' }}
         return (
             <View style={styles.container}>
                 <KeyboardAwareScrollView style={{ flex: 1, width: '100%' }}
@@ -129,7 +154,9 @@ export default class MoreInfo extends React.Component {
                             style={styles.button}
                             onPress=
                             {
+                                //console.log(data1),
                                 this.updateInfo
+                                //this.getData
                             }
                         >
                             <Text style={styles.buttonTitle}>Submit Data</Text>
@@ -138,6 +165,11 @@ export default class MoreInfo extends React.Component {
                     <View style={styles.footerView}>
                         <Text onPress={this.onFooterLinkPress} style={styles.footerLink}>Home</Text>
                     </View>
+                    {/* <View style={styles.footerView}>
+                        
+                        <Text onPress={this.onLinkPress} style={styles.footerLink}>{this.state.dash}</Text>
+                    </View> */}
+                   
                     {/* <View style={styles.innerContainer}>
                         <TouchableOpacity
                                 style={styles.button}
