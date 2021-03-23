@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import React, { Component, useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { LoginScreen, HomeScreen, RegistrationScreen, CovidScreen, VaccineScreen, MaternalScreen, OtherInfoScreen, FAQScreen} from './src/screens'
+import { LoginScreen, HomeScreen, RegistrationScreen, CovidScreen, VaccineScreen, MaternalScreen, OtherInfoScreen, FAQScreen, OurTeamScreen, LoadingScreen} from './src/screens'
 import {decode, encode} from 'base-64'
 if (!global.btoa) {  global.btoa = encode }
 if (!global.atob) { global.atob = decode }
@@ -72,6 +72,7 @@ export default function App() {
         <Stack.Screen name="Maternal" component={MaternalScreen} />
         <Stack.Screen name="Other Info" component={OtherInfoScreen} />
         <Stack.Screen name="FAQ" component={FAQScreen} />
+        <Stack.Screen name="Our Team" component={OurTeamScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -14,4 +14,9 @@ export { default as OtherInfoScreen } from './OtherInfoScreen/OtherInfoScreen'
 
 export { default as FAQScreen } from './FAQScreen/FAQScreen'
 
+export { default as OurTeamScreen } from './OurTeamScreen/OurTeamScreen'
+
+export {default as LoadingScreen } from './LoadingScreen/LoadingScreen'
+
+
 
