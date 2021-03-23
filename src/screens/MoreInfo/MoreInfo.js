@@ -36,12 +36,12 @@ export default class MoreInfo extends React.Component {
                 age: this.state.ag
             }
         ),
-        db.collection("users").doc(firebase.auth().currentUser.uid).update(
-            {
-                monthsPreg: this.state.mp
-            });
+            db.collection("users").doc(firebase.auth().currentUser.uid).update(
+                {
+                    monthsPreg: this.state.mp
+                });
     }
-    
+
     updateInfo = () => {
         const keys = []
 
@@ -55,43 +55,46 @@ export default class MoreInfo extends React.Component {
             date: Date.now(),
         })
 
-     
-      
+
+
 
         db.collection("users").doc(firebase.auth().currentUser.uid).update(
             {
                 age: this.state.ag
             }
         ),
-        db.collection("users").doc(firebase.auth().currentUser.uid).update(
-            {
-                monthsPreg: this.state.mp
-            }
-        );
+            db.collection("users").doc(firebase.auth().currentUser.uid).update(
+                {
+                    monthsPreg: this.state.mp
+                }
+            );
     }
 
     fetchData = async () => {
         const userRef = firebase.database().ref("users");
         const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
-        const bpRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "BloodPressure");        bpRef.once('value').then(snapshot => {
+        const bpRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "BloodPressure");
+        bpRef.once('value').then(snapshot => {
             snapshot.forEach(item => {
                 var temp = { bp1: item.val().bpMeasure };
                 // var temp = item.val();
                 data1.push(Object.values(temp));
+                this.setState({ data1 })
                 //this.dash = temp; 
                 this.setState({ dash: Object.values(temp) });
-                this.setState({intVal:Object.values(temp) })
+
+                this.setState({ intVal: Object.values(temp) })
                 //console.log(this.state.dash);
                 return false;
-       });
-       //console.log(data1[0])
-    //    console.log(data1);
-    console.log(data1);
+            });
+            //console.log(data1[0])
+            //    console.log(data1);
+            console.log(data1);
 
-       });
+        });
     }
 
-    
+
     onPress = () => {
         // navigation.navigate('Home', { user })
     }
@@ -102,7 +105,7 @@ export default class MoreInfo extends React.Component {
     onLinkPress = () => {
         // this.props.navigation.navigate('Home', { user })
     }
-    
+
 
     render() {
         return (
@@ -166,10 +169,12 @@ export default class MoreInfo extends React.Component {
                         <Text onPress={this.onFooterLinkPress} style={styles.footerLink}>Home</Text>
                     </View>
                     {/* <View style={styles.footerView}>
-                        
-                        <Text onPress={this.onLinkPress} style={styles.footerLink}>{this.state.dash}</Text>
-                    </View> */}
-                   
+                        {data1.map((d) => (
+                            <Text>{d}</Text>
+                        ))} */}
+                        {/* <Text style={styles.footerText}>{"Blood Pressure: "}{this.state.data1}</Text> */}
+                    {/* </View> */}
+
                     {/* <View style={styles.innerContainer}>
                         <TouchableOpacity
                                 style={styles.button}
