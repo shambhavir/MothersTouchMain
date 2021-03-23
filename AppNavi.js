@@ -63,12 +63,7 @@ export default class AppNavi extends Component {
                   <>
                     <Stack.Screen name="HomeScreen" component={HomeScreen}/>
                     <Stack.Screen name = "MoreInfo" component={MoreInfo}/>
-                    {/* <Stack.Screen name="Covid-19" component={CovidScreen}/>
-                    <Stack.Screen name="Vaccine" component={VaccineScreen}/>
-                    <Stack.Screen name="Maternal" component={MaternalScreen}/>
-                    <Stack.Screen name="Other Info" component={OtherInfoScreen}/>
-                    <Stack.Screen name="FAQ" component={FAQScreen}/>
-                    <Stack.Screen name="Our Team" component={OurTeamScreen}/> */}
+                
                   </>
              }
   

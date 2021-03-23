@@ -48,12 +48,7 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Registration" component={RegistrationScreen} />
         <Stack.Screen name = "MoreInfo" component = {MoreInfo}/>
-        {/* <Stack.Screen name="Covid-19" component={CovidScreen} />
-        <Stack.Screen name="Vaccine" component={VaccineScreen} />
-        <Stack.Screen name="Maternal" component={MaternalScreen} />
-        <Stack.Screen name="Other Info" component={OtherInfoScreen} />
-        <Stack.Screen name="FAQ" component={FAQScreen} />
-        <Stack.Screen name="Our Team" component={OurTeamScreen} /> */}
+       
       </Stack.Navigator>
     </NavigationContainer>
   );
