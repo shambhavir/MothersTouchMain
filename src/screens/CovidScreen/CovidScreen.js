@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, View, Text } from 'react-native';
 
-import styles from './covidstyles';
+import styles from './styles';
 
 {/*export default function CovidScreen(props) { //in future if need for more navigation, need to replace props with navigation hehe
     return (
