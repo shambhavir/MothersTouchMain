@@ -168,12 +168,12 @@ export default class MoreInfo extends React.Component {
                     <View style={styles.footerView}>
                         <Text onPress={this.onFooterLinkPress} style={styles.footerLink}>Home</Text>
                     </View>
-                    {/* <View style={styles.footerView}>
-                        {data1.map((d) => (
-                            <Text>{d}</Text>
-                        ))} */}
-                        {/* <Text style={styles.footerText}>{"Blood Pressure: "}{this.state.data1}</Text> */}
-                    {/* </View> */}
+                    <View style={styles.footerView}>
+                        {data1.map((d, i) => (
+                            <Text key={i}>{d}</Text>
+                        ))} 
+                    {/* <Text style={styles.footerText}>{"Blood Pressure: "}{this.state.data1}</Text> */}
+                    </View>
 
                     {/* <View style={styles.innerContainer}>
                         <TouchableOpacity
