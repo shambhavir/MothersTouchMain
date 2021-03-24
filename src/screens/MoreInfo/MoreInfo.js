@@ -79,6 +79,7 @@ export default class MoreInfo extends React.Component {
                 var temp = { bp1: item.val().bpMeasure };
                 // var temp = item.val();
                 data1.push(Object.values(temp));
+                //console.log(data1)
                 this.setState({ data1 })
                 //this.dash = temp; 
                 this.setState({ dash: Object.values(temp) });
@@ -89,7 +90,7 @@ export default class MoreInfo extends React.Component {
             });
             //console.log(data1[0])
             //    console.log(data1);
-            console.log(data1);
+            //console.log(data1);
 
         });
     }
@@ -103,7 +104,7 @@ export default class MoreInfo extends React.Component {
         this.props.navigation.navigate('Home', { user })
     }
     onLinkPress = () => {
-        // this.props.navigation.navigate('Home', { user })
+        this.props.navigation.navigate('DashBoard', { user })
     }
 
 
@@ -168,11 +169,14 @@ export default class MoreInfo extends React.Component {
                     <View style={styles.footerView}>
                         <Text onPress={this.onFooterLinkPress} style={styles.footerLink}>Home</Text>
                     </View>
-                    <View style={styles.footerView}>
+                    {/* <View style={styles.footerView}>
                         {data1.map((d, i) => (
                             <Text key={i}>{d}</Text>
-                        ))} 
-                    {/* <Text style={styles.footerText}>{"Blood Pressure: "}{this.state.data1}</Text> */}
+                        ))}
+                        {/* <Text style={styles.footerText}>{"Blood Pressure: "}{this.state.data1}</Text> */}
+                    {/* </View>  */}
+                    <View style={styles.footerView}>
+                        <Text onPress={this.onLinkPress} style={styles.footerLink}>Dashboard</Text>
                     </View>
 
                     {/* <View style={styles.innerContainer}>

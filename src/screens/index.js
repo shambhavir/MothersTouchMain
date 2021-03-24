@@ -19,3 +19,4 @@ export { default as OurTeamScreen } from './OurTeamScreen/OurTeamScreen'
 export { default as MoreInfo } from './MoreInfo/MoreInfo'
 
 
+export { default as DashBoard } from './DashBoard/DashBoard'
