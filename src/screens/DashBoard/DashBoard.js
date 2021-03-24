@@ -63,10 +63,10 @@ export default class DashBoard extends React.Component {
     render() {
         const { items, isLoading } = this.state;
         return (
-            <View style={styles.container}>
+            <View style={styles.MainContainer}>
                 <View style={styles.innerContainer}>
                     {data1.map((d, i) => (
-                        <Text key={i}>{d}</Text>
+                        <Text key={i} style={styles.TextStyle}>{d}</Text>
                     ))}
                 </View>
             </View>
