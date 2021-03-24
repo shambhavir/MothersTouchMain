@@ -12,7 +12,7 @@ const user = firebase.auth().currentUser;
 var data1 = [];
 
 
-export default class MoreInfo extends React.Component {
+export default class DashBoard extends React.Component {
     constructor(props) {
         super(props);
         this.state =
@@ -42,29 +42,36 @@ export default class MoreInfo extends React.Component {
         bpRef.once('value').then(snapshot => {
             snapshot.forEach(item => {
                 var temp = { bp1: item.val().bpMeasure };
-               
+
                 data1.push(Object.values(temp));
                 this.setState({ data1 })
                 //this.dash = temp; 
                 this.setState({ dash: Object.values(temp) });
 
                 this.setState({ intVal: Object.values(temp) })
-                
+
                 return false;
             });
-           
+
         });
+        // DashBoard.navigationOptions = {
+        //     headerTitle: 'Dash Board',
+        //     headerLeft: null,
+        // }; 
+    
     }
     render() {
+        const { items, isLoading } = this.state;
         return (
             <View style={styles.container}>
-                    <View style={styles.innerContainer}>
-                {data1.map((d, i) => (
-                    <Text key={i}>{d}</Text>
-                ))}
-            </View>
+                <View style={styles.innerContainer}>
+                    {data1.map((d, i) => (
+                        <Text key={i}>{d}</Text>
+                    ))}
+                </View>
             </View>
 
         )
     }
+    
 }
