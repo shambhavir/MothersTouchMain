@@ -21,7 +21,10 @@ export default class DashBoard extends React.Component {
             ag: '',
             mp: '',
             intVal: [],
-            dash: ''
+            dash: '',
+            data1: [],
+            test: '',
+            test2: ''
         };
     }
     componentDidMount() {
@@ -33,39 +36,44 @@ export default class DashBoard extends React.Component {
         const bpRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "BloodPressure")
         const path = bpRef.toString();
 
-        bpRef.push({
-            bpMeasure: this.state.bp,
-            date: Date.now(),
-        })
+       
 
-
+        /*need to fix re rendering too many times
+        and also that 100 is being added to the array again and again
+        play around with it, this will fix the issue
+        */
         bpRef.once('value').then(snapshot => {
             snapshot.forEach(item => {
-                var temp = { bp1: item.val().bpMeasure };
+                const userObj = snapshot.val();
+                var temp = item.val().bpMeasure;
+                //console.log(temp)
+                ////this.data1.push(item.val().bpMeasure)
+                this.setState(
+                    {
+                        test: temp
+                    }
+                )
 
-                data1.push(Object.values(temp));
-                this.setState({ data1 })
-                //this.dash = temp; 
-                this.setState({ dash: Object.values(temp) });
-
-                this.setState({ intVal: Object.values(temp) })
-
+                
+                this.setState(prevState => ({ //works?!
+                    data1: [...prevState.data1, temp]
+                  }))
+             
+            
+              
                 return false;
             });
 
         });
-        // DashBoard.navigationOptions = {
-        //     headerTitle: 'Dash Board',
-        //     headerLeft: null,
-        // }; 
-    
     }
     render() {
-        const { items, isLoading } = this.state;
+        console.log(this.state.data1)
         return (
             <View style={styles.MainContainer}>
                 <View style={styles.innerContainer}>
-                    {data1.map((d, i) => (
+                     <Text>{this.state.test2}</Text>
+                    <Text style={styles.TextStyle}>Your Blood Pressure Records</Text>
+                    {this.state.data1.map((d, i) => (
                         <Text key={i} style={styles.TextStyle}>{d}</Text>
                     ))}
                 </View>
@@ -75,3 +83,31 @@ export default class DashBoard extends React.Component {
     }
     
 }
+
+
+
+ //const one = bpRef.child; 
+
+       // console.log(bpRef.child)
+
+        // bpRef.push({
+        //     bpMeasure: this.state.bp,
+        //     date: Date.now(),
+        // }).then({  })
+
+    // console.log(this.state.test)
+                // console.log("\n")
+                //console.log(this.state.data1)
+                //console.log(this.state.test)
+                 //console.log(Object.values(userObj)) 
+                 //console.log(userObj)
+                
+                // console.log(data1)
+                 //console.log(this.state.test2)
+                // this.setState
+                // ({  
+                //     bp1: item.val().bpMeasure, 
+                // })
+               /// this.setState({ data1: Object.values(temp)})
+              //  var newStateArray = this.state.data1.slice(); 
+              //  newStateArray.push(Object.values(temp));

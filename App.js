@@ -42,17 +42,16 @@ export default function App() {
     
     <NavigationContainer>
       <Stack.Navigator initialRouteName={user ? 'Home' : 'Login'}>
-        {/*<Stack.Screen name="Home">
+        <Stack.Screen name="Home">
           {props => <HomeScreen {...props} extraData={user}/>}
-        </Stack.Screen>*/}
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
+        </Stack.Screen>
+        {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
+        <Stack.Screen name="Login" component={LoginScreen}  />
         <Stack.Screen name="MoreInfo" component={MoreInfo} />
-        <Stack.Screen name="DashBoard" component={DashBoard} 
-        navigationOptions={ header={
-          left: null
-        }}
-        />
+        {/* <Stack.Screen name="Dashboard">
+          {props => <DashBoard {...props}/>}
+        </Stack.Screen> */}
+        <Stack.Screen name="DashBoard" component={DashBoard} />
         <Stack.Screen name="Registration" component={RegistrationScreen} />
         <Stack.Screen name="Covid-19" component={CovidScreen} />
         <Stack.Screen name="Vaccine" component={VaccineScreen} />

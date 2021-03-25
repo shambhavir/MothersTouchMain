@@ -109,6 +109,9 @@ export default class MoreInfo extends React.Component {
 
 
     render() {
+        var count = 0; 
+        count++; 
+        console.log(count); 
         return (
             <View style={styles.container}>
                 <KeyboardAwareScrollView style={{ flex: 1, width: '100%' }}

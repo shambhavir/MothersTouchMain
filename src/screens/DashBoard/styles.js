@@ -63,6 +63,10 @@ export default StyleSheet.create({
       
       TextStyle:{
         fontSize : 25,
-         textAlign: 'center'
+         textAlign: 'center',
+         //paddingTop: 40,
+paddingLeft: 15,
+flexDirection: 'row',
+justifyContent: 'space-between',
       }
 })
