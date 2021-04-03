@@ -2,12 +2,22 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     container: {
-        flex: 5,
-        alignItems: 'center'
+        // flex: 5,
+        // alignItems: 'center'
+        
+            padding: 25,
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
     },
     title: {
 
     },
+    text: {
+        fontSize: 24,
+        marginBottom: 30,
+        padding: 40,
+      },
     logo: {
         flex: 1,
         height: 120,
@@ -60,7 +70,20 @@ export default StyleSheet.create({
         margin: 10
         
       },
-      
+      fab: {
+        position: 'absolute',
+        margin: 16,
+        right: 0,
+        bottom: 0,
+      },
+      closeText: {
+        fontSize: 24,
+        color: '#00479e',
+        textAlign: 'center',
+      },
+
+
+     
       TextStyle:{
         fontSize : 25,
          textAlign: 'center',
@@ -68,5 +91,9 @@ export default StyleSheet.create({
 paddingLeft: 15,
 flexDirection: 'row',
 justifyContent: 'space-between',
-      }
+      },
+
+
+
+   
 })
