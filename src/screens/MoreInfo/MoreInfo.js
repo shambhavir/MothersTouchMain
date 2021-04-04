@@ -26,19 +26,26 @@ export default class MoreInfo extends React.Component {
             ag: '',
             mp: '',
             intVal: [],
-            dash: ''
+            dash: '',
+            entered: true
         };
     }
     componentDidMount() {
         this.fetchData();
+        //this.setState({ returningUser: true })
+
         db.collection("users").doc(firebase.auth().currentUser.uid).update(
             {
-                age: this.state.ag
+                age: this.state.ag,
+                enteredData: true
             }
         ),
+
             db.collection("users").doc(firebase.auth().currentUser.uid).update(
                 {
-                    monthsPreg: this.state.mp
+                    monthsPreg: this.state.mp,
+                    enteredData: true
+
                 });
     }
 
@@ -54,20 +61,20 @@ export default class MoreInfo extends React.Component {
             bpMeasure: this.state.bp,
             date: Date.now(),
         })
-
-
-
-
         db.collection("users").doc(firebase.auth().currentUser.uid).update(
             {
-                age: this.state.ag
+                age: this.state.ag,
+                enteredData: true
             }
         ),
+
             db.collection("users").doc(firebase.auth().currentUser.uid).update(
                 {
-                    monthsPreg: this.state.mp
+                    monthsPreg: this.state.mp,
+                    enteredData: true
                 }
             );
+     
     }
 
     fetchData = async () => {
@@ -77,21 +84,15 @@ export default class MoreInfo extends React.Component {
         bpRef.once('value').then(snapshot => {
             snapshot.forEach(item => {
                 var temp = { bp1: item.val().bpMeasure };
-                // var temp = item.val();
                 data1.push(Object.values(temp));
-                //console.log(data1)
                 this.setState({ data1 })
-                //this.dash = temp; 
                 this.setState({ dash: Object.values(temp) });
 
                 this.setState({ intVal: Object.values(temp) })
-                //console.log(this.state.dash);
+
                 return false;
             });
-            //console.log(data1[0])
-            //    console.log(data1);
-            //console.log(data1);
-
+          
         });
     }
 
@@ -109,9 +110,9 @@ export default class MoreInfo extends React.Component {
 
 
     render() {
-        var count = 0; 
-        count++; 
-        console.log(count); 
+        var count = 0;
+        count++;
+        console.log(count);
         return (
             <View style={styles.container}>
                 <KeyboardAwareScrollView style={{ flex: 1, width: '100%' }}
@@ -159,12 +160,7 @@ export default class MoreInfo extends React.Component {
                     <View style={styles.innerContainer}>
                         <TouchableOpacity
                             style={styles.button}
-                            onPress=
-                            {
-                                //console.log(data1),
-                                this.updateInfo
-                                //this.getData
-                            }
+                            onPress= {this.updateInfo}
                         >
                             <Text style={styles.buttonTitle}>Submit Data</Text>
                         </TouchableOpacity>
@@ -172,29 +168,10 @@ export default class MoreInfo extends React.Component {
                     <View style={styles.footerView}>
                         <Text onPress={this.onFooterLinkPress} style={styles.footerLink}>Home</Text>
                     </View>
-                    {/* <View style={styles.footerView}>
-                        {data1.map((d, i) => (
-                            <Text key={i}>{d}</Text>
-                        ))}
-                        {/* <Text style={styles.footerText}>{"Blood Pressure: "}{this.state.data1}</Text> */}
-                    {/* </View>  */}
+                 
                     <View style={styles.footerView}>
                         <Text onPress={this.onLinkPress} style={styles.footerLink}>Dashboard</Text>
                     </View>
-
-                    {/* <View style={styles.innerContainer}>
-                        <TouchableOpacity
-                                style={styles.button}
-                                onPress=
-                                {
-                                    // this.updateInfo
-                                    //this.props.updateState
-                                    this.updateState
-                                }
-                            >
-                                <Text style={styles.buttonTitle}>Home</Text>
-                            </TouchableOpacity>
-                        </View> */}
                 </KeyboardAwareScrollView>
             </View>
         );

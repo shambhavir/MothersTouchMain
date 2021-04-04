@@ -34,18 +34,13 @@ export default function LoginScreen({ navigation }) {
                         }
                         const user = firestoreDocument.data()
                         const checkVal = user.checked
-                        //console.log(user.email)
-                        //console.log(checkVal);
-                        //console.log(user.bloodPressure + "nothing")
-                        if (checkVal == true) {
-                            // if (user.bloodPressure + "nothing" == user.bloodPressure + "nothing") {
-                            //     console.log("not empty");
+                        const check2 = user.enteredData
+                     
+                        if (checkVal == true && check2 == false) {
+                          
                                 navigation.navigate('MoreInfo', { user })
-                          //  }
-                          ///  else
-                            //    navigation.navigate('Home', { user });
+                      
                             console.log('you checked for more info!')
-                            //navigation.navigate('Home', { user })
                         }
                         else {
                             console.log('you didnt check more info')
