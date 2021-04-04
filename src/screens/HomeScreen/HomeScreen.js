@@ -40,6 +40,11 @@ export default function HomeScreen({navigation}) {
           title="Our Team"
           onPress={() => navigation.navigate('Our Team')}
         />
+          <Button
+          color="#a52a49"
+          title="InfoScreen1"
+          onPress={() => navigation.navigate('InfoScreen1')}
+        />
   
       </View>
     );

@@ -20,3 +20,5 @@ export { default as MoreInfo } from './MoreInfo/MoreInfo'
 
 
 export { default as DashBoard } from './DashBoard/DashBoard'
+export { default as InfoScreen1 } from './InfoScreen1/InfoScreen1'
+
