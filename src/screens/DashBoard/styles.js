@@ -81,6 +81,11 @@ export default StyleSheet.create({
         color: '#00479e',
         textAlign: 'center',
       },
+      sideContainer: {
+          flex:1,
+          paddingLeft: 8,
+          paddingRight: 8
+      },
 
 
      

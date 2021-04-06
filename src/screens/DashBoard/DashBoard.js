@@ -17,15 +17,17 @@ export default class DashBoard extends React.Component {
         super(props);
         this.state =
         {
-            bp: '',
+            bp1: '',
+            bp2: '',
             ag: '',
             mp: '',
             intVal: [],
             dash: '',
             data1: [],
+            data2: [],
             test: '',
             test2: '',
-            isVisible: false
+            isVisible: false,
         };
     }
     componentDidMount() {
@@ -37,15 +39,19 @@ export default class DashBoard extends React.Component {
         bpRef.once('value').then(snapshot => {
             snapshot.forEach(item => {
                 const userObj = snapshot.val();
-                var temp = item.val().bpMeasure;
-
+                var temp = item.val().systolic;
+                var temp2 = item.val().dystolic;
                 this.setState(
                     {
-                        test: temp
+                        test: temp,
+                        test2: temp2
                     }
                 )
                 this.setState(prevState => ({ //works?!
                     data1: [...prevState.data1, temp]
+                }))
+                this.setState(prevState => ({ //works?!
+                    data2: [...prevState.data2, temp2]
                 }))
                 return false;
             });
@@ -62,13 +68,14 @@ export default class DashBoard extends React.Component {
         const bpRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "BloodPressure")
         const path = bpRef.toString();
         bpRef.push({
-            bpMeasure: this.state.bp,
+            systolic: this.state.bp1,
+            dystolic: this.state.bp2,
             date: Date.now(),
         })
 
     }
     render() {
-        console.log(this.state.data1)
+        console.log(this.state.data2)
         return (
             <Portal.Host>
                 <View style={styles.MainContainer}>
@@ -81,7 +88,8 @@ export default class DashBoard extends React.Component {
                             transparent
                             visible={this.state.isVisible}
                             presentationStyle="overFullScreen"
-                            style={{borderRadius: 20}}
+                            style={{ borderRadius: 20 }}
+                            justifyContent={'flex-end'}
                         >
                             <View style={{
                                 flex: 1,
@@ -100,12 +108,24 @@ export default class DashBoard extends React.Component {
                                             style={styles.input}
                                             placeholderTextColor="#aaaaaa"
                                             secureTextEntry
-                                            placeholder='Blood Pressure'
+                                            placeholder='Systolic'
                                             underlineColorAndroid="transparent"
                                             autoCapitalize="none"
                                             multiline
-                                            onChangeText={(bp) => this.setState({ bp })}
-                                            value={`${this.state.bp}`}
+                                            onChangeText={(bp1) => this.setState({ bp1 })}
+                                            value={`${this.state.bp1}`}
+
+                                        />
+                                        <TextInput
+                                            style={styles.input}
+                                            placeholderTextColor="#aaaaaa"
+                                            secureTextEntry
+                                            placeholder='Dystolic'
+                                            underlineColorAndroid="transparent"
+                                            autoCapitalize="none"
+                                            multiline
+                                            onChangeText={(bp2) => this.setState({ bp2 })}
+                                            value={`${this.state.bp2}`}
 
                                         />
                                         {/* <Button
@@ -130,12 +150,29 @@ export default class DashBoard extends React.Component {
                         </Modal>
                         <View style={styles.innerContainer}>
                             <Text style={styles.TextStyle}>Your Blood Pressure Records</Text>
+                            <View style={{flexDirection:"row"}}>
+                            <View style={styles.sideContainer}>
+                                {this.state.data1.map((d, i) =>
+                                    <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120, width: 140 }} key={i}>
+                                        <Text>
+                                            <Text key={i} style={styles.TextStyle}>{d}</Text>
+                                           
+                                        </Text>
+                                    </Card>
+                                )}
+                            </View>
+                            <View style={{flex:1}}>
 
-                            {this.state.data1.map((d, i) => (
-                                <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120 }}key={i}>
-                                    <Text key={i} style={styles.TextStyle}>{d}</Text>
-                                </Card>
-                            ))}
+                                 {this.state.data2.map((d, i) =>
+                                    <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120, width: 140 }} key={i}>
+                                        <Text>
+                                            <Text key={i} style={styles.TextStyle}>{d}</Text>
+                                           
+                                        </Text>
+                                    </Card>
+                                )}
+                                </View>
+                            </View>
                         </View>
 
                     </ScrollView>
@@ -152,3 +189,10 @@ export default class DashBoard extends React.Component {
         )
     }
 }
+
+
+{/* {this.state.data1.map((d, i) => (
+                                <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120 }}key={i}>
+                                    <Text key={i} style={styles.TextStyle}>{d}</Text>
+                                </Card>
+                            ))} */}
