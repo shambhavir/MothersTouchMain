@@ -49,7 +49,7 @@ export default class DashBoard extends React.Component {
 
                         <Button
                             onPress={() => { this.props.navigation.navigate('Resource1') }}
-                            title="test"
+                            title="Learn more about nutrition"
                             color="#841584"
                             accessibilityLabel="Learn more about this purple button"
                         />
@@ -59,7 +59,7 @@ export default class DashBoard extends React.Component {
 
                         <Button
                             onPress={() => { this.props.navigation.navigate('Resource1') }}
-                            title="test"
+                            title="Learn more about sleep"
                             color="#841584"
                             accessibilityLabel="Learn more about this purple button"
                         />

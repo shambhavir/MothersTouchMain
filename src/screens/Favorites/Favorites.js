@@ -51,7 +51,7 @@ export default class Favorites extends React.Component {
 
         return (
             <View style={styles.container}>
-
+                <ScrollView>
              <View style={styles.innerContainer}>
              <Text style={styles.TextStyle}>Your Favorites</Text>
 
@@ -61,6 +61,8 @@ export default class Favorites extends React.Component {
                  </Card>
              ))}
          </View>
+         </ScrollView>
+
          </View>
         )
 
