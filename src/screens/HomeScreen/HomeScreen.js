@@ -13,15 +13,32 @@ export default function HomeScreen({ navigation }) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'left', marginVertical: 0, marginHorizontal: 0, backgroundColor: '#ffe9f2' }}>
       <Text>Hello! Please select the option that {'\n'}         best fits your situation. {'\n'} </Text>
       <ScrollView>
-      <Card style={{ padding: 10, margin: 10, borderRadius: 20}}>
+      <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120}}>
         <Button
           onPress={() => navigation.navigate('InfoScreen1')}
-          title="Learn More"
+          title="Resource 1"
           color="#841584"
           accessibilityLabel="Learn more about this purple button"
         />
       </Card>
-      <Card style={{ padding: 10, margin: 10, borderRadius: 20}}>
+      <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120 }}>
+       
+       <Button
+         color="#a52a49"
+         title="Resource 2"
+         onPress={() => navigation.navigate('InfoScreen1')}
+       />
+       </Card>
+    
+      <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120}}>
+        <Button
+          onPress={() => navigation.navigate('DashBoard')}
+          title="Resource 3"
+          color="#841584"
+          accessibilityLabel="Learn more about this purple button"
+        />
+      </Card>
+      <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120}}>
         <Button
           onPress={() => navigation.navigate('DashBoard')}
           title="DashBoard"
@@ -29,9 +46,10 @@ export default function HomeScreen({ navigation }) {
           accessibilityLabel="Learn more about this purple button"
         />
       </Card>
+      
      
 
-      <Card style={{ padding: 10, margin: 10, borderRadius: 20 }}>
+      {/* <Card style={{ padding: 10, margin: 10, borderRadius: 20 }}>
         <Button
           color="#a52a49"
           title="Covid-19"
@@ -47,16 +65,16 @@ export default function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate('Vaccine')}
       />
       </Card>
-      
-      <Card style={{ padding: 10, margin: 10, borderRadius: 20 }}>
+       */}
+      {/* <Card style={{ padding: 10, margin: 10, borderRadius: 20 }}>
       <Button
         color="#a52a49"
         title="Maternal"
         onPress={() => navigation.navigate('Maternal')}
       />
-      </Card>
+      </Card> */}
      
-      <Card style={{ padding: 10, margin: 10, borderRadius: 20 }}>
+      {/* <Card style={{ padding: 10, margin: 10, borderRadius: 20 }}>
       <Button
         color="#a52a49"
         title="Other Info"
@@ -79,16 +97,9 @@ export default function HomeScreen({ navigation }) {
         title="Our Team"
         onPress={() => navigation.navigate('Our Team')}
       />
-      </Card>
+      </Card> */}
       
-      <Card style={{ padding: 10, margin: 10, borderRadius: 20 }}>
-       
-      <Button
-        color="#a52a49"
-        title="InfoScreen1"
-        onPress={() => navigation.navigate('InfoScreen1')}
-      />
-      </Card>
+     
      
       
     
@@ -97,44 +108,3 @@ export default function HomeScreen({ navigation }) {
   );
 
 }
-{/*function HomeScreen({ navigation }) {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'left', marginVertical: 0,  marginHorizontal: 0, backgroundColor: '#ffe9f2'}}>
-        <Text>Hello! Please select the option that {'\n'}         best fits your situation. {'\n'} </Text>
-        <Button
-          color="#a52a49"
-          title="Covid-19"
-          onPress={() => navigation.navigate('Covid-19')}
-        />
-        <Button
-          color="#a52a49"
-          title="Vaccine Info"
-          onPress={() => navigation.navigate('Vaccine')}
-        />
-        <Button
-          color="#a52a49"
-          title="Maternal"
-          onPress={() => navigation.navigate('Maternal')}
-        />
-        <Button
-          color="#a52a49"
-          title="Other Info"
-          onPress={() => navigation.navigate('Other Info')}
-        />
-        <Button
-          color="#a52a49"
-          title="FAQ"
-          onPress={() => navigation.navigate('FAQ')}
-        />
-        <Button
-          color="#a52a49"
-          title="Our Team"
-          onPress={() => navigation.navigate('Our Team')}
-        />
-  
-      </View>
-    );
-    
-  }*/}
-
-
