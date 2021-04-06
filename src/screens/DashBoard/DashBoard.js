@@ -3,7 +3,8 @@ import { Image, Text, TextInput, TouchableOpacity, View, Modal, Button, ScrollVi
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
 import AsyncStorage from '@react-native-community/async-storage';
-import Card from './Card';
+// import Card from './Card';
+import { Card } from 'react-native-shadow-cards';
 import { firebase, firebaseConfig, db, getUserDocument, realtime } from '../../firebase/config'
 import "firebase/auth";
 import "firebase/firestore";
@@ -132,7 +133,7 @@ export default class DashBoard extends React.Component {
                             <Text style={styles.TextStyle}>Your Blood Pressure Records</Text>
 
                             {this.state.data1.map((d, i) => (
-                                <Card key={i}>
+                                <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120 }}key={i}>
                                     <Text key={i} style={styles.TextStyle}>{d}</Text>
                                 </Card>
                             ))}
