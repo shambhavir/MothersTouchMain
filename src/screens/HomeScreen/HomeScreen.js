@@ -29,23 +29,23 @@ export default function HomeScreen({ navigation }) {
          onPress={() => navigation.navigate('InfoScreen1')}
        />
        </Card>
-    
       <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120}}>
         <Button
           onPress={() => navigation.navigate('DashBoard')}
-          title="Resource 3"
+          title="Blood Pressure Dashboard"
           color="#841584"
           accessibilityLabel="Learn more about this purple button"
         />
       </Card>
       <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120}}>
         <Button
-          onPress={() => navigation.navigate('DashBoard')}
-          title="DashBoard"
+          onPress={() => navigation.navigate('Favorites')}
+          title="Favorites"
           color="#841584"
           accessibilityLabel="Learn more about this purple button"
         />
       </Card>
+      
       
      
 

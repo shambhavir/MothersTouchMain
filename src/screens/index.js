@@ -23,4 +23,5 @@ export { default as DashBoard } from './DashBoard/DashBoard'
 export { default as InfoScreen1 } from './InfoScreen1/InfoScreen1'
 export { default as Resource1 } from './Resource1/Resource1'
 
+export { default as Favorites } from './Favorites/Favorites'
 

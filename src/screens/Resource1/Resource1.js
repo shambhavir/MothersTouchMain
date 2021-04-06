@@ -10,12 +10,11 @@ const user = firebase.auth().currentUser;
 import styles from './styles';
 
 export default class Resource1 extends React.Component {
-
     updateInfo1 = () => {
         const keys = []
         const userRef = firebase.database().ref("users");
         const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
-        const favRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "Favorites")
+        const favRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "FavoritesResource1")
         const path = favRef.toString();
 
         favRef.push({
@@ -28,7 +27,7 @@ export default class Resource1 extends React.Component {
         const keys = []
         const userRef = firebase.database().ref("users");
         const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
-        const favRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "Favorites")
+        const favRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "FavoritesResource1")
         const path = favRef.toString();
 
         favRef.push({
@@ -39,7 +38,7 @@ export default class Resource1 extends React.Component {
         const keys = []
         const userRef = firebase.database().ref("users");
         const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
-        const favRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "Favorites")
+        const favRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "FavoritesResource1")
         const path = favRef.toString();
 
         favRef.push({
@@ -50,7 +49,7 @@ export default class Resource1 extends React.Component {
         const keys = []
         const userRef = firebase.database().ref("users");
         const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
-        const favRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "Favorites")
+        const favRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "FavoritesResource1")
         const path = favRef.toString();
 
         favRef.push({
@@ -61,7 +60,7 @@ export default class Resource1 extends React.Component {
         const keys = []
         const userRef = firebase.database().ref("users");
         const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
-        const favRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "Favorites")
+        const favRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "FavoritesResource1")
         const path = favRef.toString();
 
         favRef.push({
