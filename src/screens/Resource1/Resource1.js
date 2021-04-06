@@ -8,7 +8,10 @@ import { Card } from 'react-native-shadow-cards';
 
 const user = firebase.auth().currentUser;
 import styles from './styles';
-
+var infostorage = []; 
+infostorage[0] = "this is some data 1"
+infostorage[1] = "this is some data 2"
+infostorage[2] = "this is some data 3"
 export default class Resource1 extends React.Component {
     updateInfo1 = () => {
         const keys = []
@@ -16,9 +19,8 @@ export default class Resource1 extends React.Component {
         const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
         const favRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "FavoritesResource1")
         const path = favRef.toString();
-
         favRef.push({
-            testpush: "data1"
+            testpush: infostorage[0]
         })
 
 
@@ -31,7 +33,7 @@ export default class Resource1 extends React.Component {
         const path = favRef.toString();
 
         favRef.push({
-            testpush: "data2"
+            testpush: infostorage[1]
         })
     }
     updateInfo3 = () => {
@@ -42,7 +44,7 @@ export default class Resource1 extends React.Component {
         const path = favRef.toString();
 
         favRef.push({
-            testpush: "data3"
+            testpush: infostorage[2]
         })
     }
     updateInfo4 = () => {
@@ -73,24 +75,24 @@ export default class Resource1 extends React.Component {
                  <ScrollView>
                 <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 300 }}>
                
-                    <Text>Nutrition</Text>
+                    <Text>Title</Text>
                     <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
                     
 
                     <Button
                         onPress={this.updateInfo1}
-                        title="⭐️"
+                        title="❤️"
                         color="#841584"
                         accessibilityLabel="Learn more about this purple button"
                     />
                    
                 </Card>
                 <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 300  }}>
-                    <Text>Sleep</Text>
+                    <Text>Title 2</Text>
                     <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
                     <Button
                         onPress={this.updateInfo2}
-                        title="⭐️"
+                        title="❤️"
                         color="#841584"
                         accessibilityLabel="Learn more about this purple button"
                     />
@@ -100,7 +102,7 @@ export default class Resource1 extends React.Component {
                     <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
                     <Button
                         onPress={this.updateInfo3}
-                        title="⭐️"
+                        title="❤️"
                         color="#841584"
                         accessibilityLabel="Learn more about this purple button"
                     />
@@ -110,7 +112,7 @@ export default class Resource1 extends React.Component {
                     <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
                     <Button
                         onPress={this.updateInfo4}
-                        title="⭐️"
+                        title="❤️"
                         color="#841584"
                         accessibilityLabel="Learn more about this purple button"
                     />
@@ -120,7 +122,7 @@ export default class Resource1 extends React.Component {
                     <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
                     <Button
                         onPress={this.updateInfo5}
-                        title="⭐️"
+                        title="❤️"
                         color="#841584"
                         accessibilityLabel="Learn more about this purple button"
                     />

@@ -81,9 +81,8 @@ export default class DashBoard extends React.Component {
                             transparent
                             visible={this.state.isVisible}
                             presentationStyle="overFullScreen"
-
+                            style={{borderRadius: 20}}
                         >
-
                             <View style={{
                                 flex: 1,
                                 flexDirection: 'column',
