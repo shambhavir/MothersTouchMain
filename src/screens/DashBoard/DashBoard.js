@@ -28,8 +28,14 @@ export default class DashBoard extends React.Component {
             test: '',
             test2: '',
             isVisible: false,
+            isModalVisible: false,
+            setModalVisible: false
         };
     }
+    // toggleModal = () => {
+    //     setModalVisible(!isModalVisible);
+    //     this.setState
+    //   }
     componentDidMount() {
         const keys = []
         const userRef = firebase.database().ref("users");
@@ -79,9 +85,6 @@ export default class DashBoard extends React.Component {
         return (
             <Portal.Host>
                 <View style={styles.MainContainer}>
-
-
-
                     <ScrollView>
                         <Modal
                             animationType={"slide"}
@@ -128,25 +131,18 @@ export default class DashBoard extends React.Component {
                                             value={`${this.state.bp2}`}
 
                                         />
-                                        {/* <Button
-                                            title="Submit"
-                                            onPress={this.updateInfo} /> */}
+                                      
                                         <TouchableOpacity
                                             style={styles.button}
                                             onPress={this.updateInfo}
                                         >
                                             <Text style={styles.buttonTitle}>Submit Data</Text>
                                         </TouchableOpacity>
+                                        <Button title="Close" onPress={() =>!this.setState({isVisible:false})} />
 
                                     </KeyboardAwareScrollView >
                                 </View>
                             </View>
-                            <TouchableOpacity
-                                style={styles.container}
-                                activeOpacity={1}
-                                onPressOut={() => { this.setState({ isVisible: false }) }}
-                            ></TouchableOpacity>
-
                         </Modal>
                         <View style={styles.innerContainer}>
                             <Text style={styles.TextStyle}>Your Blood Pressure Records</Text>
@@ -189,10 +185,3 @@ export default class DashBoard extends React.Component {
         )
     }
 }
-
-
-{/* {this.state.data1.map((d, i) => (
-                                <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120 }}key={i}>
-                                    <Text key={i} style={styles.TextStyle}>{d}</Text>
-                                </Card>
-                            ))} */}
