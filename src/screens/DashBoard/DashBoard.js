@@ -9,9 +9,11 @@ import { firebase, firebaseConfig, db, getUserDocument, realtime } from '../../f
 import "firebase/auth";
 import "firebase/firestore";
 import "firebase/database";
-import { FAB, Portal } from 'react-native-paper';
+import { FAB, Portal, Provider } from 'react-native-paper';
 
 const user = firebase.auth().currentUser;
+const MusicRoute = () => <Text>Music</Text>;
+
 export default class DashBoard extends React.Component {
     constructor(props) {
         super(props);
@@ -29,7 +31,8 @@ export default class DashBoard extends React.Component {
             test2: '',
             isVisible: false,
             isModalVisible: false,
-            setModalVisible: false
+            setModalVisible: false,
+            open: false
         };
     }
     // toggleModal = () => {
@@ -86,7 +89,7 @@ export default class DashBoard extends React.Component {
             <Portal.Host>
                 <View style={styles.MainContainer}>
                     <ScrollView>
-                        <Modal
+                     <Modal
                             animationType={"slide"}
                             transparent
                             visible={this.state.isVisible}
@@ -172,14 +175,30 @@ export default class DashBoard extends React.Component {
                         </View>
 
                     </ScrollView>
-                    <FAB
+                    {/* <FAB
                         style={styles.fab}
                         large
                         icon="plus"
                         onPress={() => {
                             this.displayModal(true);
                         }}
-                    />
+                    /> */}
+                      <FAB.Group
+          open={this.state.open}
+          icon={this.state.open ? 'plus' : 'plus'}
+          actions={[
+            { icon: 'star', label: 'FAQ', onPress: () => console.log('Pressed star')},
+            { icon: 'email', label: 'How do I measure my BP?', onPress: () => console.log('Pressed email') },
+            { icon: 'notifications', label: 'Add a Record', onPress: () => this.displayModal(true) },
+          ]}
+          onStateChange={({ open }) => this.setState({ open })}
+          onPress={() => {
+            if (this.state.open) {
+              // do something if the speed dial is open
+            }
+          }}
+        />
+                     
                 </View>
             </Portal.Host>
         )

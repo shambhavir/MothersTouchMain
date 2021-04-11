@@ -13,6 +13,17 @@ infostorage[0] = "this is some data 1"
 infostorage[1] = "this is some data 2"
 infostorage[2] = "this is some data 3"
 export default class Resource1 extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state =
+        {
+            isVisible: false
+        }
+    }
+    displayModal(show) {
+        this.setState({ isVisible: show })
+    }
     updateInfo1 = () => {
         const keys = []
         const userRef = firebase.database().ref("users");
@@ -29,7 +40,7 @@ export default class Resource1 extends React.Component {
         const keys = []
         const userRef = firebase.database().ref("users");
         const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
-        const favRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "FavoritesResource1")
+        const favRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "FavoritesResource2")
         const path = favRef.toString();
 
         favRef.push({
@@ -40,7 +51,7 @@ export default class Resource1 extends React.Component {
         const keys = []
         const userRef = firebase.database().ref("users");
         const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
-        const favRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "FavoritesResource1")
+        const favRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "FavoritesResource3")
         const path = favRef.toString();
 
         favRef.push({
@@ -51,7 +62,7 @@ export default class Resource1 extends React.Component {
         const keys = []
         const userRef = firebase.database().ref("users");
         const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
-        const favRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "FavoritesResource1")
+        const favRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "FavoritesResource4")
         const path = favRef.toString();
 
         favRef.push({
@@ -62,7 +73,7 @@ export default class Resource1 extends React.Component {
         const keys = []
         const userRef = firebase.database().ref("users");
         const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
-        const favRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "FavoritesResource1")
+        const favRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "FavoritesResource5")
         const path = favRef.toString();
 
         favRef.push({
@@ -73,6 +84,7 @@ export default class Resource1 extends React.Component {
         return (
             <View style={styles.container}>
                 <ScrollView>
+                    
                     <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 300 }}>
 
                         <Text>Title</Text>
@@ -80,7 +92,8 @@ export default class Resource1 extends React.Component {
 
 
                         <Button
-                            onPress={this.updateInfo1}
+                            onPress={this.updateInfo1                            
+                            }
                             title="❤️"
                             color="#841584"
                             accessibilityLabel="Learn more about this purple button"
