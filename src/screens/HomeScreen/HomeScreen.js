@@ -38,6 +38,7 @@ const FadeInView = (props) => {
 export default function HomeScreen({ navigation }) {
  
   return (
+    //[styles.red, styles.big]
     <View style={styles.container}>
        <FadeInView style={{width: 300, height: 200}}>
        <Text style={{
@@ -75,8 +76,11 @@ export default function HomeScreen({ navigation }) {
               }}
             >
               <View style={{ flex: 5, justifyContent: "center", fontFamily: "System" }}>
+                {/* <Text style={{
+                  justifyContent: "center", color: "black", fontFamily: "System", fontSize: 20, fontWeight: '500'
+                }}>💉</Text> */}
                 <Text style={{
-                  color: "black", fontFamily: "System", fontSize: 20
+                  color: "black", fontFamily: "System", fontSize: 20, fontWeight: '500'
                 }}>Resource 1</Text>
               </View>
             </Button>
@@ -93,7 +97,7 @@ export default function HomeScreen({ navigation }) {
             >
               <View style={{ flex: 5, justifyContent: "center", fontFamily: "System" }}>
                 <Text style={{
-                  color: "black", fontFamily: "System", fontSize: 20
+                  color: "black", fontFamily: "System", fontSize: 20, fontWeight: '500'
                 }}>Resource 2</Text>
               </View>
             </Button>
@@ -114,8 +118,8 @@ export default function HomeScreen({ navigation }) {
             >
               <View style={{ flex: 5, justifyContent: "center", fontFamily: "System" }}>
                 <Text style={{
-                  color: "black", fontFamily: "System",  fontSize: 20
-                }}>Blood Pressure Dashboard</Text>
+                  color: "black", fontFamily: "System",  fontSize: 20, fontWeight: '500'
+                }}>Blood 🩸Pressure Dashboard</Text>
               </View>
             </Button>
             <Text>{'\n'}    </Text>
@@ -124,6 +128,7 @@ export default function HomeScreen({ navigation }) {
              onPress={() => navigation.navigate('Favorites')}
               color="white"
               mode="contained"
+              //icon="settings-box"
               style={{
                 borderRadius: 20, width: 160, height: 140, shadowColor: 'black',
                 shadowOpacity: 0.9, elevation: 5, backgroundColor: '#8fbc8f'
@@ -131,8 +136,8 @@ export default function HomeScreen({ navigation }) {
             >
               <View style={{ flex: 5, justifyContent: "center", fontFamily: "System" }}>
                 <Text style={{
-                  color: "black", fontFamily: "System", fontSize: 20
-                }}>Settings</Text>
+                  color: "black", fontFamily: "System", fontSize: 20, fontWeight: '500'
+                }}>Settings ⚙️</Text>
               </View>
             </Button>
           </View>

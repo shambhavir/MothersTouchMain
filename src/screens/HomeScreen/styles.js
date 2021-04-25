@@ -7,7 +7,7 @@ export default StyleSheet.create({
         // justifyContent: "flex-start"  
         flex: 1,  
         padding: 26,  
-        backgroundColor: "#fff",  
+        backgroundColor: "#fffaf0",  
         justifyContent: "flex-start"  
 
     },
