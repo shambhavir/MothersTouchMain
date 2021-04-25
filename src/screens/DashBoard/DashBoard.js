@@ -10,9 +10,15 @@ import "firebase/auth";
 import "firebase/firestore";
 import "firebase/database";
 import { FAB, Portal, Provider } from 'react-native-paper';
+import RNRestart from 'react-native-restart';
+import { StackNavigator, DrawerNavigator } from 'react-navigation';
+import Icon from 'react-native-vector-icons/Octicons';
+
 
 const user = firebase.auth().currentUser;
 const MusicRoute = () => <Text>Music</Text>;
+const startReload = ()=> RNRestart.Restart();
+
 
 export default class DashBoard extends React.Component {
     constructor(props) {
@@ -32,13 +38,23 @@ export default class DashBoard extends React.Component {
             isVisible: false,
             isModalVisible: false,
             setModalVisible: false,
-            open: false
+            open: false,
+            refreshing: false,
+            uniqueValue: 1
         };
     }
     // toggleModal = () => {
     //     setModalVisible(!isModalVisible);
     //     this.setState
     //   }
+
+    _onRefresh = () => {
+        this.setState({refreshing: true});
+        fetchData().then(() => {
+          this.setState({refreshing: false});
+        });
+      }
+
     componentDidMount() {
         const keys = []
         const userRef = firebase.database().ref("users");
@@ -71,7 +87,7 @@ export default class DashBoard extends React.Component {
     }
     updateInfo = () => {
         const keys = []
-
+        this.state.refresh = true
         const userRef = firebase.database().ref("users");
         const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
         const bpRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "BloodPressure")
@@ -83,9 +99,12 @@ export default class DashBoard extends React.Component {
         })
 
     }
+   
+   
     render() {
         console.log(this.state.data2)
         return (
+            
             <Portal.Host>
                 <View style={styles.MainContainer}>
                     <ScrollView>
@@ -148,9 +167,10 @@ export default class DashBoard extends React.Component {
                             </View>
                         </Modal>
                         <View style={styles.innerContainer}>
+                       
                             <Text style={styles.TextStyle}>Your Blood Pressure Records</Text>
                             <View style={{flexDirection:"row"}}>
-                            <View style={styles.sideContainer}>
+                            <View style={styles.sideContainer} key={this.state.uniqueValue}>
                                 {this.state.data1.map((d, i) =>
                                     <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120, width: 140 }} key={i}>
                                         <Text>
@@ -160,6 +180,7 @@ export default class DashBoard extends React.Component {
                                     </Card>
                                 )}
                             </View>
+                        
                             <View style={{flex:1}}>
 
                                  {this.state.data2.map((d, i) =>
@@ -170,7 +191,9 @@ export default class DashBoard extends React.Component {
                                         </Text>
                                     </Card>
                                 )}
+                                
                                 </View>
+
                             </View>
                         </View>
 
@@ -198,6 +221,7 @@ export default class DashBoard extends React.Component {
             }
           }}
         />
+        
                      
                 </View>
             </Portal.Host>

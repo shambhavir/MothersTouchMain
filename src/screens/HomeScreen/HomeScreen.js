@@ -1,108 +1,224 @@
 //import React from 'react'
 //mport { Text, View } from 'react-native'
-import * as React from 'react';
-import { Button, View, Text, ScrollView  } from 'react-native';
+import React, { useRef, useEffect } from "react";
+import { Animated, View, Text, ScrollView } from 'react-native';
 import styles from './styles';
 import { Card } from 'react-native-shadow-cards';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Button } from 'react-native-paper';
 
 //import { NavigationContainer } from '@react-navigation/native';
 //import { createStackNavigator } from '@react-navigation/stack';
+const FadeInView = (props) => {
+  const fadeAnim = useRef(new Animated.Value(0)).current  // Initial value for opacity: 0
+
+  React.useEffect(() => {
+    Animated.timing(
+      fadeAnim,
+      {
+        toValue: 1,
+        duration: 5000,
+        useNativeDriver: true,
+      }
+    ).start();
+  }, [fadeAnim])
+
+  return (
+    <Animated.View                 // Special animatable View
+      style={{
+        ...props.style,
+        opacity: fadeAnim,         // Bind opacity to animated value
+      }}
+    >
+      {props.children}
+    </Animated.View>
+  );
+}
 
 export default function HomeScreen({ navigation }) {
+ 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'left', marginVertical: 0, marginHorizontal: 0, backgroundColor: '#ffe9f2' }}>
-      <Text>Hello! Please select the option that {'\n'}         best fits your situation. {'\n'} </Text>
-      <ScrollView>
-      <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120}}>
-        <Button
-          onPress={() => navigation.navigate('InfoScreen1')}
-          title="Resource 1"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
-      </Card>
-      <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120 }}>
-       
-       <Button
-         color="#a52a49"
-         title="Resource 2"
-         onPress={() => navigation.navigate('InfoScreen1')}
-       />
-       </Card>
-      <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120}}>
-        <Button
-          onPress={() => navigation.navigate('DashBoard')}
-          title="Blood Pressure Dashboard"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
-      </Card>
-      <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120}}>
-        <Button
-          onPress={() => navigation.navigate('Favorites')}
-          title="Favorites"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
-      </Card>
-      
-      
-     
-
-      {/* <Card style={{ padding: 10, margin: 10, borderRadius: 20 }}>
-        <Button
-          color="#a52a49"
-          title="Covid-19"
-          onPress={() => navigation.navigate('Covid-19')}
-        />
-      </Card>
-     
-
-      <Card style={{ padding: 10, margin: 10, borderRadius: 20 }}>
-      <Button
-        color="#a52a49"
-        title="Vaccine Info"
-        onPress={() => navigation.navigate('Vaccine')}
-      />
-      </Card>
-       */}
-      {/* <Card style={{ padding: 10, margin: 10, borderRadius: 20 }}>
-      <Button
-        color="#a52a49"
-        title="Maternal"
-        onPress={() => navigation.navigate('Maternal')}
-      />
-      </Card> */}
-     
-      {/* <Card style={{ padding: 10, margin: 10, borderRadius: 20 }}>
-      <Button
-        color="#a52a49"
-        title="Other Info"
-        onPress={() => navigation.navigate('Other Info')}
-      />
-      </Card>
-     
-      
-      <Card style={{ padding: 10, margin: 10, borderRadius: 20 }}>
-      <Button
-        color="#a52a49"
-        title="FAQ"
-        onPress={() => navigation.navigate('FAQ')}
-      />
-      </Card>
-     
-      <Card style={{ padding: 10, margin: 10, borderRadius: 20 }}>
-      <Button
-        color="#a52a49"
-        title="Our Team"
-        onPress={() => navigation.navigate('Our Team')}
-      />
-      </Card> */}
-      
-     
-     
-      
+    <View style={styles.container}>
+       <FadeInView style={{width: 300, height: 200}}>
+       <Text style={{
+        color: "black", fontWeight: 'bold', fontSize: 45, fontFamily: "System"
+      }}>Welcome to Mother's Touch</Text>
     
+       {/* <Text style={{
+        color: "black", fontWeight: 'bold', fontSize: 45, fontFamily: "System"
+      }}>Mother's Touch <Text>® </Text></Text> */}
+      
+      </FadeInView>
+       
+ 
+      {/* <Text style={{
+        color: "black", fontWeight: 'bold', fontSize: 50, fontFamily: "System"
+      }}>Welcome to</Text>
+    
+       <Text style={{
+        color: "black", fontWeight: 'bold', fontSize: 50, fontFamily: "System"
+      }}>Mother's Touch <Text>® </Text></Text>
+       */}
+      <Text>{'\n'}    </Text>
+
+      <View style={styles.innerContainer}>
+        <View style={{ flexDirection: "row" }} >
+
+          <View style={styles.sideContainer}>
+            <Button
+              onPress={() => navigation.navigate('InfoScreen1')}
+              color="white"
+              mode="contained"
+              style={{
+                borderRadius: 20, width: 160, height: 140, shadowColor: 'black',
+                shadowOpacity: 0.9, elevation: 5, backgroundColor: '#8fbc8f'
+              }}
+            >
+              <View style={{ flex: 5, justifyContent: "center", fontFamily: "System" }}>
+                <Text style={{
+                  color: "black", fontFamily: "System", fontSize: 20
+                }}>Resource 1</Text>
+              </View>
+            </Button>
+            <Text>{'\n'}    </Text>
+
+            <Button
+             onPress={() => navigation.navigate('DashBoard')}
+              color="white"
+              mode="contained"
+              style={{
+                borderRadius: 20, width: 160, height: 140, shadowColor: 'black',
+                shadowOpacity: 0.9, elevation: 5, backgroundColor: '#fafad2'
+              }}
+            >
+              <View style={{ flex: 5, justifyContent: "center", fontFamily: "System" }}>
+                <Text style={{
+                  color: "black", fontFamily: "System", fontSize: 20
+                }}>Resource 2</Text>
+              </View>
+            </Button>
+
+          </View>
+          <Text>{'\n'}    </Text>
+          <Text>{'\n'}    </Text>
+
+          <View style={{ flex: 1, justifyContent: "left" }}>
+            <Button
+              onPress={() => navigation.navigate('InfoScreen1')}
+              color="white"
+              mode="contained"
+              style={{
+                borderRadius: 20, width: 160, height: 140, shadowColor: 'black',
+                shadowOpacity: 0.9, elevation: 5, backgroundColor: '#ffb6c1'
+              }}
+            >
+              <View style={{ flex: 5, justifyContent: "center", fontFamily: "System" }}>
+                <Text style={{
+                  color: "black", fontFamily: "System",  fontSize: 20
+                }}>Blood Pressure Dashboard</Text>
+              </View>
+            </Button>
+            <Text>{'\n'}    </Text>
+
+            <Button
+             onPress={() => navigation.navigate('Favorites')}
+              color="white"
+              mode="contained"
+              style={{
+                borderRadius: 20, width: 160, height: 140, shadowColor: 'black',
+                shadowOpacity: 0.9, elevation: 5, backgroundColor: '#8fbc8f'
+              }}
+            >
+              <View style={{ flex: 5, justifyContent: "center", fontFamily: "System" }}>
+                <Text style={{
+                  color: "black", fontFamily: "System", fontSize: 20
+                }}>Settings</Text>
+              </View>
+            </Button>
+          </View>
+
+
+
+
+
+        </View>
+        <Text>{'\n'}    </Text>
+
+
+
+      </View>
+
+
+      <ScrollView>
+
+        {/* <View style={{ textAlign: 'center', position: 'absolute',
+              top: 40,
+              left: 120, fontFamily: "Cochin"}}>
+        <Button 
+          onPress={() => navigation.navigate('InfoScreen1')}
+          color="white"
+          mode="contained"
+        >
+
+<Text style={{color:"black", fontFamily:"System"}}>press me</Text>
+        </Button>
+        </View>
+        <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120,backgroundColor:'#8fbc8f',  shadowColor: 'black',
+    shadowOpacity: 0.9,
+    elevation: 56}}>
+        <View style={{ textAlign: 'center', position: 'absolute',
+              top: 40,
+              left: 120, fontFamily: "Cochin"}}>
+        <Button 
+          onPress={() => navigation.navigate('InfoScreen1')}
+          color="white"
+          mode="contained"
+        >
+
+<Text style={{color:"black", fontFamily:"System"}}>press me</Text>
+        </Button>
+        </View>
+        </Card>
+        <Text>{'\n'}    </Text>
+        <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120, backgroundColor:'#8fbc8f' }}>
+          <View style={{ textAlign: 'center', position: 'absolute',
+              top: 40,
+              left: 65}}>
+          <Button
+           
+            onPress={() => navigation.navigate('DashBoard')}
+            title="Blood Pressure Dashboard"
+            color="white"
+            accessibilityLabel="Learn more about this purple button"
+          />
+          </View>
+        </Card>
+        <Text>{'\n'}    </Text>
+        <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120, backgroundColor:'#8fbc8f'  }}>
+        <View style={{ textAlign: 'center', position: 'absolute',
+              top: 40,
+              left: 145}}>
+          <Button
+            onPress={() => navigation.navigate('Favorites')}
+            title="Favorites"
+            color="white"
+            accessibilityLabel="Learn more about this purple button"
+          />
+          </View>
+        </Card>
+        <Text>{'\n'}    </Text>
+        <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 120, backgroundColor:'#8fbc8f'  }}>
+        <View style={{ textAlign: 'center', position: 'absolute',
+              top: 40,
+              left: 145}}>
+          <Button
+            color="white"
+            title="Settings"
+            onPress={() => navigation.navigate('InfoScreen1')}
+          />
+          </View>
+        </Card> */}
+        <Text>{'\n'}    </Text>
       </ScrollView>
     </View>
   );

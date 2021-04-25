@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { Button, View, Text, TouchableOpacity, ScrollView, Modal } from 'react-native';
 import { firebase, firebaseConfig, db, getUserDocument, realtime } from '../../firebase/config'
 import "firebase/auth";
 import "firebase/firestore";
@@ -84,15 +84,35 @@ export default class Resource1 extends React.Component {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                    
+                  
                     <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 300 }}>
+                    {/* <Modal
+                        animationType={"slide"}
+                        transparent
+                        visible={this.state.isVisible}
+                        presentationStyle="overFullScreen"
+                        style={{ borderRadius: 20 }}
+                        justifyContent={'flex-end'}
+                    >
+                        <View style={{
+                            flex: 1,
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}>
+                        </View>
+                        <Button title="Close" onPress={() =>!this.setState({isVisible:false})} />
 
+                    </Modal> */}
                         <Text>Title</Text>
                         <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
 
 
                         <Button
-                            onPress={this.updateInfo1                            
+                            // onPress={this.updateInfo1                            
+                            // }
+                            onPress={
+                                () => { this.updateInfo1();  }
                             }
                             title="❤️"
                             color="#841584"

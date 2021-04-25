@@ -1,6 +1,7 @@
 import 'react-native-gesture-handler';
 import React, { Component, useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
+import {createAppContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { DashBoard, MoreInfo, LoginScreen, HomeScreen, RegistrationScreen, CovidScreen, VaccineScreen, MaternalScreen, OtherInfoScreen, FAQScreen, OurTeamScreen, LoadingScreen, InfoScreen1, Resource1, Favorites} from './src/screens'
 import {decode, encode} from 'base-64'
@@ -39,7 +40,6 @@ export default function App() {
   }, []);
 
   return (
-    
     <NavigationContainer>
       <Stack.Navigator initialRouteName={user ? 'Home' : 'Login'}>
         <Stack.Screen name="Home">
