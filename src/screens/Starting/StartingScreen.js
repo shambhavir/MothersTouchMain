@@ -61,7 +61,9 @@ const FadeInView = (props) => {
                   borderRadius: 20, width: 300, height: 140, shadowColor: 'black',
                   shadowOpacity: 0.9, elevation: 5, backgroundColor: '#8fbc8f'
                 }}
+                
               >
+                
                 <View style={{ flex: 5, justifyContent: "center", fontFamily: "System" }}>
                 
                   <Text style={{
@@ -72,7 +74,7 @@ const FadeInView = (props) => {
               <Text>{'\n'}    </Text>
   
               <Button
-               onPress={() => navigation.navigate('DashBoard')}
+               onPress={() => navigation.navigate('InterestForm2')}
                 color="white"
                 mode="contained"
                 style={{

@@ -3,7 +3,7 @@ import React, { Component, useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import {createAppContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { DashBoard, MoreInfo, LoginScreen, HomeScreen, RegistrationScreen, CovidScreen, VaccineScreen, MaternalScreen, OtherInfoScreen, FAQScreen, OurTeamScreen, LoadingScreen, InfoScreen1, Resource1, Favorites, StartingScreen, InterestForm1} from './src/screens'
+import { DashBoard, MoreInfo, LoginScreen, HomeScreen, RegistrationScreen, CovidScreen, VaccineScreen, MaternalScreen, OtherInfoScreen, FAQScreen, OurTeamScreen, LoadingScreen, InfoScreen1, Resource1, Favorites, StartingScreen, InterestForm1, InterestForm2} from './src/screens'
 import {decode, encode} from 'base-64'
 if (!global.btoa) {  global.btoa = encode }
 if (!global.atob) { global.atob = decode }
@@ -64,7 +64,7 @@ export default function App() {
         <Stack.Screen name="Favorites" component={Favorites} />
         <Stack.Screen name="StartingScreen" component={StartingScreen} />
         <Stack.Screen name="InterestForm1" component={InterestForm1} />
-
+        <Stack.Screen name="InterestForm2" component={InterestForm2} />
       </Stack.Navigator>
     </NavigationContainer>
   );

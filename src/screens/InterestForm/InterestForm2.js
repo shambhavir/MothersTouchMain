@@ -8,7 +8,6 @@ import { CheckBox } from 'react-native-elements';
 import { firebase, firebaseConfig, db, getUserDocument, realtime } from '../../firebase/config'
 
 
-const user = firebase.auth().currentUser;
 
 const FadeInView = (props) => {
     const fadeAnim = useRef(new Animated.Value(0)).current  // Initial value for opacity: 0
@@ -35,9 +34,10 @@ const FadeInView = (props) => {
         </Animated.View>
     );
 }
-// const { navigate } = this.props.navigation;
 
-export default class InterestForm extends React.Component {
+
+
+export default class InterestForm2 extends React.Component {
     constructor(props) {
         super(props);
         this.state =
@@ -60,27 +60,22 @@ export default class InterestForm extends React.Component {
 
     }
 
-
     handleOnPress = () => {
         this.setState({
             opacityTest: 0.5
         })
     }
 
-    onLinkPress = () => {
-        this.props.navigation.navigate('Home', { user })
-    }
-
-    // onButtonPress = ({navigation}) => {
-    //     navigation.navigate('HomeScreen')
+    // onButtonPress = () => {
+    //     this.setState({ buttonColor: '#67C495' }); 
     //   }
-
+      
 
     onpress1 = () => {
         if (!this.state.check1) {
             this.setState({
                 // opacity1: 1,
-                check1: true,
+                 check1: true,
                 buttonColor1: '#67C495'
 
             })
@@ -110,7 +105,7 @@ export default class InterestForm extends React.Component {
             this.setState({
                 check2: true,
                 buttonColor2: '#67C495'
-
+               
             })
             firebase.auth().onAuthStateChanged(function (user) {
                 const currentUser = user;
@@ -194,10 +189,10 @@ export default class InterestForm extends React.Component {
                     <View style={{ flexDirection: "row" }} >
 
                         <View style={styles.sideContainer}>
-
+                            
                             <Button
                                 onPress={() => this.onpress1()}
-                                color={this.state.buttonColor1}
+                                color= {this.state.buttonColor1}
                                 mode="contained"
                                 style={{
                                     borderRadius: 20, width: 160, height: 140, shadowColor: 'black',
@@ -219,7 +214,7 @@ export default class InterestForm extends React.Component {
 
                             <Button
                                 onPress={() => this.onpress2()}
-                                color={this.state.buttonColor2}
+                                color= {this.state.buttonColor2}
                                 mode="contained"
                                 style={{
                                     borderRadius: 20, width: 160, height: 140, shadowColor: 'black',
@@ -244,7 +239,7 @@ export default class InterestForm extends React.Component {
 
                             <Button
                                 onPress={() => this.onpress3()}
-                                color={this.state.buttonColor3}
+                                color= {this.state.buttonColor3}
                                 mode="contained"
                                 style={{
                                     borderRadius: 20, width: 160, height: 140, shadowColor: 'black',
@@ -265,7 +260,7 @@ export default class InterestForm extends React.Component {
 
                             <Button
                                 onPress={() => this.onpress4()}
-                                color={this.state.buttonColor4}
+                                color= {this.state.buttonColor4}
                                 mode="contained"
                                 style={{
                                     borderRadius: 20, width: 160, height: 140, shadowColor: 'black',
@@ -285,23 +280,12 @@ export default class InterestForm extends React.Component {
 
 
                         </View>
-                        <View style={{
-                            flex: 1,
-                            alignItems: "center",
-                            marginTop: 20
-                        }}>
-
-                        <Button onPress={() => this.onLinkPress()}>
-                            <Text>Test</Text>
-                        </Button>
-                        </View>
-
 
                     </View>
                     <Text>{'\n'}    </Text>
 
-                </View>
 
+                </View>
 
 
             </View>

@@ -25,6 +25,7 @@ export default function RegistrationScreen({ navigation }) {
     const [nutrition] = useState(false)
     const [mentalHealth] = useState(false)
     const [exercise] = useState(false)
+    const [userType] = useState('')
     
     // const [isSelected, setSelection] = React.useState(false);
 
@@ -53,7 +54,8 @@ export default function RegistrationScreen({ navigation }) {
                     covid, 
                     nutrition,
                     mentalHealth,
-                    exercise
+                    exercise,
+                    userType
                   
                     
                 };
