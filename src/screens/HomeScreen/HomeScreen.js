@@ -6,9 +6,16 @@ import styles from './styles';
 import { Card } from 'react-native-shadow-cards';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Button } from 'react-native-paper';
+import { firebase, firebaseConfig, db, getUserDocument, realtime } from '../../firebase/config'
+import "firebase/auth";
+import "firebase/firestore";
+import "firebase/database";
 
 //import { NavigationContainer } from '@react-navigation/native';
 //import { createStackNavigator } from '@react-navigation/stack';
+// const ref = firestore().collection('users');
+
+  
 const FadeInView = (props) => {
   const fadeAnim = useRef(new Animated.Value(0)).current  // Initial value for opacity: 0
 
@@ -43,7 +50,7 @@ export default function HomeScreen({ navigation }) {
        <FadeInView style={{width: 300, height: 200}}>
        <Text style={{
         color: "black", fontWeight: 'bold', fontSize: 45, fontFamily: "System"
-      }}>Welcome to Mother's Touch</Text>
+       }}>nothing</Text>
     
        {/* <Text style={{
         color: "black", fontWeight: 'bold', fontSize: 45, fontFamily: "System"
