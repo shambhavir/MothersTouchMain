@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { DashBoard, MoreInfo, LoginScreen, HomeScreen, RegistrationScreen, CovidScreen, VaccineScreen, MaternalScreen, OtherInfoScreen,FAQScreen, OurTeamScreen, InfoScreen1, Resource1, Favorites } from './src/screens'
+import { DashBoard, MoreInfo, LoginScreen, HomeScreen, RegistrationScreen, CovidScreen, VaccineScreen, MaternalScreen, OtherInfoScreen, FAQScreen, OurTeamScreen, LoadingScreen, InfoScreen1, Resource1, Favorites, StartingScreen, InterestForm1, InterestForm2} from './src/screens'
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { firebase } from './src/firebase/config'
@@ -73,6 +73,9 @@ export default class AppNavi extends Component {
                     <Stack.Screen name="InfoScreen1" component={InfoScreen1}/>
                     <Stack.Screen name="Resource1" component={Resource1}/>
                     <Stack.Screen name="Favorites" component={Favorites}/>
+                    <Stack.Screen name="StartingScreen" component={StartingScreen}/>
+                    <Stack.Screen name="InterestForm1" component={InterestForm1}/>
+                    <Stack.Screen name="InterestForm2" component={InterestForm2}/>
 
                   </>
                   

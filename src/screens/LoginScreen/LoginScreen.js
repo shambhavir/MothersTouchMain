@@ -38,13 +38,13 @@ export default function LoginScreen({ navigation }) {
                      
                         if (checkVal == true && check2 == false) {
                           
-                                navigation.navigate('MoreInfo', { user })
+                                navigation.navigate('StartingScreen', {  user })
                       
                             console.log('you checked for more info!')
                         }
                         else {
                             console.log('you didnt check more info')
-                            navigation.navigate('Home', { user })
+                            navigation.navigate('StartingScreen', { user })
                         }
                     })
                     .catch(error => {
@@ -63,7 +63,7 @@ export default function LoginScreen({ navigation }) {
                 keyboardShouldPersistTaps="always">
                 <Image
                     style={styles.logo}
-                    source={require('../../../assets/icon.png')}
+                    source={require('../../../assets/mtlogo.png')}
                 />
                 <TextInput
                     style={styles.input}

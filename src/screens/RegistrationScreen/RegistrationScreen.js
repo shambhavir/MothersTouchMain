@@ -21,6 +21,11 @@ export default function RegistrationScreen({ navigation }) {
     const [confirmPassword, setConfirmPassword] = useState('')
     const [enteredData, setEnteredData] = useState('')
     const [hasOptedIn, setInfo] = useState(false)
+    const [covid] = useState(false)
+    const [nutrition] = useState(false)
+    const [mentalHealth] = useState(false)
+    const [exercise] = useState(false)
+    const [userType] = useState('')
     
     // const [isSelected, setSelection] = React.useState(false);
 
@@ -45,7 +50,13 @@ export default function RegistrationScreen({ navigation }) {
                     email,
                     fullName,
                     checked,
-                    enteredData
+                    enteredData,
+                    covid, 
+                    nutrition,
+                    mentalHealth,
+                    exercise,
+                    userType
+                  
                     
                 };
                 const usersRef = firebase.firestore().collection('users')

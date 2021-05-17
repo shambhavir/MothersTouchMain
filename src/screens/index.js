@@ -25,3 +25,6 @@ export { default as Resource1 } from './Resource1/Resource1'
 
 export { default as Favorites } from './Favorites/Favorites'
 
+export { default as StartingScreen } from './Starting/StartingScreen'
+export { default as InterestForm1 } from './InterestForm/InterestForm1'
+export { default as InterestForm2 } from './InterestForm/InterestForm2'
