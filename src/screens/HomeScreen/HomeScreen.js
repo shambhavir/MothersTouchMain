@@ -1,6 +1,6 @@
 //mport { Text, View } from 'react-native'
 import React, { useRef, useEffect, useState } from "react";
-import { Animated, View, Text, ScrollView, useWindowDimensions, StyleSheet, Dimensions  } from 'react-native';
+import { Animated, View, Text, ScrollView, useWindowDimensions, StyleSheet, Dimensions } from 'react-native';
 import styles from './styles';
 import { Card } from 'react-native-shadow-cards';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -13,11 +13,23 @@ import { TabViewAnimated, TabBar, SceneMap, TabView } from 'react-native-tab-vie
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 
 const FirstRoute = () => (
-  <View style={{ flex: 1, backgroundColor: '#ff4081' }} />
+  <View style={{ flex: 1, backgroundColor: '#ff4081' }}>
+     <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 300 }}>
+       <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
+
+
+       </Card>
+
+    </View>
 );
 
 const SecondRoute = () => (
-  <View style={{ flex: 1, backgroundColor: '#673ab7' }} />
+  <View style={{ flex: 1, backgroundColor: '#673ab7' }}>
+     <Card style={{ padding: 10, margin: 10, borderRadius: 20, height: 300 }}>
+       <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
+       </Card>
+
+  </View>
 );
 
 
@@ -26,49 +38,53 @@ export default class HomeScreen extends React.Component {
   state = {
     index: 0,
     routes: [
-     {
-       key: 'first',
-       title: 'For You',
-      
-     },
-     {
-       key: 'second',
-       title: 'Explore',
-     }
-   ]
-   };
-   _renderScene = SceneMap({
+      {
+        key: 'first',
+        title: 'For You',
+
+      },
+      {
+        key: 'second',
+        title: 'Explore',
+      }
+    ]
+  };
+  _renderScene = SceneMap({
     first: FirstRoute,
     second: SecondRoute,
+  });
+  onpress4 = () => {
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      const currentUser = user;
+      console.log(db.collection("users").doc(currentUser.uid).get(covid));
     });
-    onpress4 = () => {
-    
-          firebase.auth().onAuthStateChanged(function (user) {
-              const currentUser = user;
-              console.log(db.collection("users").doc(currentUser.uid).get(covid));
-          });
   }
-    
-    // _renderIcon = ({ route }) => {
-    // return (
-    //   <Icon name={route.icon} size={24} color='black' />
-    // );
-    // };
+
+  // _renderIcon = ({ route }) => {
+  // return (
+  //   <Icon name={route.icon} size={24} color='black' />
+  // );
+  // };
 
   render() {
     return (
-      
+
+
+
       <TabView
-    navigationState={this.state}
-    renderScene={this._renderScene}
-    onIndexChange={index => this.setState({ index })}
-    initialLayout={{ width: Dimensions.get('window').width }}
-    onpress4
-    render
-    lazy={true}
-    scrollEnabled={true}
-    bounces={true}
-  />
+        navigationState={this.state}
+        renderScene={this._renderScene}
+        onIndexChange={index => this.setState({ index })}
+        initialLayout={{ width: Dimensions.get('window').width }}
+        onpress4
+        render
+        lazy={true}
+        scrollEnabled={true}
+        bounces={true}
+      >
+        </TabView>
+      
     );
   }
 
