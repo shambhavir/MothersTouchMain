@@ -10,6 +10,7 @@ import { firebase, firebaseConfig, db, getUserDocument, realtime } from '../../f
 
 const user = firebase.auth().currentUser;
 
+
 const FadeInView = (props) => {
     const fadeAnim = useRef(new Animated.Value(0)).current  // Initial value for opacity: 0
 
@@ -71,10 +72,6 @@ export default class InterestForm extends React.Component {
         this.props.navigation.navigate('Home', { user })
     }
 
-    // onButtonPress = ({navigation}) => {
-    //     navigation.navigate('HomeScreen')
-    //   }
-
 
     onpress1 = () => {
         if (!this.state.check1) {
@@ -84,13 +81,17 @@ export default class InterestForm extends React.Component {
                 buttonColor1: '#67C495'
 
             })
-            firebase.auth().onAuthStateChanged(function (user) {
-                const currentUser = user;
-                const covidBool = { covid: true };
-                db.collection("users").doc(currentUser.uid).set(covidBool, { merge: true });
-
-
-            });
+            const keys = []
+            const userRef = firebase.database().ref("users");
+            const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
+            const choosenRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "Chosen")
+            const path = choosenRef.toString();
+            console.log(path)
+    
+            choosenRef.update({
+                covid: true
+            })
+           
         }
         else {
             this.setState
@@ -98,11 +99,17 @@ export default class InterestForm extends React.Component {
                     check1: false,
                     buttonColor1: '#8fbc8f'
                 })
-            firebase.auth().onAuthStateChanged(function (user) {
-                const currentUser = user;
-                const covidBool = { covid: false };
-                db.collection("users").doc(currentUser.uid).set(covidBool, { merge: true });
-            });
+                const keys = []
+                const userRef = firebase.database().ref("users");
+                const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
+                const choosenRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "Chosen")
+                const path = choosenRef.toString();
+                console.log(path)
+        
+                choosenRef.update({
+                    covid: false
+                })
+         
         }
     }
     onpress2 = () => {
@@ -112,21 +119,34 @@ export default class InterestForm extends React.Component {
                 buttonColor2: '#67C495'
 
             })
-            firebase.auth().onAuthStateChanged(function (user) {
-                const currentUser = user;
-                const nutritionBool = { nutrition: true };
-                db.collection("users").doc(currentUser.uid).set(nutritionBool, { merge: true });
-            });
+            const keys = []
+            const userRef = firebase.database().ref("users");
+            const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
+            const choosenRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "Chosen")
+            const path = choosenRef.toString();
+            console.log(path)
+    
+            choosenRef.update({
+                mentalBool: true
+            })
+           
         } else {
             this.setState({
                 check2: false,
                 buttonColor2: '#8fbc8f'
             })
-            firebase.auth().onAuthStateChanged(function (user) {
-                const currentUser = user;
-                const nutritionBool = { nutrition: false };
-                db.collection("users").doc(currentUser.uid).set(nutritionBool, { merge: true });
-            });
+
+            const keys = []
+            const userRef = firebase.database().ref("users");
+            const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
+            const choosenRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "Chosen")
+            const path = choosenRef.toString();
+            console.log(path)
+    
+            choosenRef.update({
+                mentalBool: false
+            })
+           
         }
     }
     onpress3 = () => {
@@ -135,21 +155,32 @@ export default class InterestForm extends React.Component {
                 check3: true,
                 buttonColor3: '#67C495'
             })
-            firebase.auth().onAuthStateChanged(function (user) {
-                const currentUser = user;
-                const mentalBool = { mentalHealth: true };
-                db.collection("users").doc(currentUser.uid).set(mentalBool, { merge: true });
-            });
+            const keys = []
+            const userRef = firebase.database().ref("users");
+            const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
+            const choosenRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "Chosen")
+            const path = choosenRef.toString();
+            console.log(path)
+    
+            choosenRef.update({
+                nutrition: true
+            })
+          
         } else {
             this.setState({
                 check3: false,
                 buttonColor3: '#8fbc8f'
             })
-            firebase.auth().onAuthStateChanged(function (user) {
-                const currentUser = user;
-                const mentalBool = { mentalHealth: false };
-                db.collection("users").doc(currentUser.uid).set(mentalBool, { merge: true });
-            });
+            const keys = []
+            const userRef = firebase.database().ref("users");
+            const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
+            const choosenRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "Chosen")
+            const path = choosenRef.toString();
+            console.log(path)
+    
+            choosenRef.update({
+                nutrition: false
+            })
         }
     }
     onpress4 = () => {
@@ -158,21 +189,33 @@ export default class InterestForm extends React.Component {
                 check4: true,
                 buttonColor4: '#67C495'
             })
-            firebase.auth().onAuthStateChanged(function (user) {
-                const currentUser = user;
-                const exBool = { exercise: true };
-                db.collection("users").doc(currentUser.uid).set(exBool, { merge: true });
-            });
+            const keys = []
+            const userRef = firebase.database().ref("users");
+            const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
+            const choosenRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "Chosen")
+            const path = choosenRef.toString();
+            console.log(path)
+    
+            choosenRef.update({
+                exBool: true
+            })
+           
         } else {
             this.setState({
                 check4: false,
                 buttonColor4: '#8fbc8f'
             })
-            firebase.auth().onAuthStateChanged(function (user) {
-                const currentUser = user;
-                const exBool = { exercise: false };
-                db.collection("users").doc(currentUser.uid).set(exBool, { merge: true });
-            });
+            const keys = []
+            const userRef = firebase.database().ref("users");
+            const uidRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
+            const choosenRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/" + "Chosen")
+            const path = choosenRef.toString();
+            console.log(path)
+    
+            choosenRef.update({
+                exBool: false
+            })
+          
         }
 
     }

@@ -32,16 +32,18 @@ export default StyleSheet.create({
         marginRight: 30,
         paddingLeft: 16
     },
-    button: {
-        backgroundColor: '#788eec',
-        marginLeft: 30,
-        marginRight: 30,
-        marginTop: 20,
-        height: 48,
-        borderRadius: 5,
-        alignItems: "center",
-        justifyContent: 'center'
-    },
+    // button: {
+    //     marginLeft: 30,
+    //     marginRight: 30,
+    //     marginTop: 20,
+    //     height: 48,
+    //     borderRadius: 5,
+    //     alignItems: "center",
+    //     justifyContent: 'center',
+    //         borderRadius: 20, width: 160, height: 140, shadowColor: 'black',
+    //         shadowOpacity: 0.9, elevation: 5,
+    //         backgroundColor: this.state.buttonColor1
+    // },
     buttonTitle: {
         color: 'white',
         fontSize: 16,
