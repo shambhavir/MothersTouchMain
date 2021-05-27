@@ -67,7 +67,7 @@ export default function HomeScreen({ navigation }) {
   return (
     //[styles.red, styles.big]
     <View style={styles.container}>
-
+	<Text>HELLO WORLD<Text/>
        {/* <FadeInView style={{width: 300, height: 200}}>
        <Text style={{
         color: "black", fontWeight: 'bold', fontSize: 45, fontFamily: "System"
