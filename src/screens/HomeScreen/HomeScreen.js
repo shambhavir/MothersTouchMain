@@ -124,7 +124,7 @@ export default class HomeScreen extends React.Component {
           <View style={{ flexDirection: "row" }} >
 
             <View style={styles.sideContainer}>
-
+              <Text> HELLO WORLD<Text/>
               <Button
                 onPress={() => this.onpress1()}
                 color={this.state.buttonColor1}
